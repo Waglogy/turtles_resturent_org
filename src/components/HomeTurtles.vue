@@ -1,6 +1,6 @@
 <template>
     <div class="body">
-      <div class="heroarea" :style="{ backgroundImage: `url(${slides[currentIndex]})` }">
+      <div class="heroarea" :style=" { backgroundImage: `url(${slides[currentIndex]})` }">
      
 
      <!-- Text and Button -->
@@ -9,7 +9,7 @@
         <p>
           Experience the best cuisines with a touch of elegance. Reserve your table today for an unforgettable experience.
         </p>
-        <button class="cta-button"><a href="/reserve">Reserve Now</a></button>
+        <button class="cta-button-primarys"><a href="/reserve">Reserve Now</a></button>
       </div>
 
         <!-- Carousel Controls -->
@@ -47,7 +47,7 @@
     <div class="call-to-action-area">
       <h2>Relax, we've got the food, drinks, and ocean sounds covered.</h2>
       <h1>You just need to show up!</h1>
-      <button class="cta-buttonsec"><a href="/contact">Navigate To Turtles</a></button>
+      <button class="cta-button-secondary"><a href="/contact">Navigate To Turtles</a></button>
     </div>
 
       <!-- Event Section with New Carousel -->
@@ -99,7 +99,7 @@
 
     <div class="reserve-spot">
       <img src="../assets/happyturtles.png" alt="helllo">
-      <button class="cta-button">Reserve Your Spot</button>
+      <button class="cta-button-primary"><a href="/reserve">Reserve Your Spot</a></button>
 
     </div>
 
@@ -122,11 +122,11 @@
         <h2>Oh, and don’t miss out on</h2>
         <h1>The Tipsy Turtle!</h1>
         <p>one per person, please!</p>
-        <button class="cta-buttonsecc">Sip Through Our Bar Menu</button>
+        <button class="cta-button-secondary"><a href="/reserve">Through Our Bar Menu</a> </button>
 
     </div>
     <div class="trispy-img">
-        <!-- <img :src="trispy" /> -->
+        <img :src="trispy" height="400px"/>
     </div>
 
 
@@ -256,78 +256,80 @@
     margin-bottom: 2rem;
     color:#333333;
   }
-  .cta-buttonsec{
-    display: inline-block;
-    background: #00BCD4;
-    color: white;
-    padding: 10px 25px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  .cta-buttonsec {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .cta-buttonsec:hover {
-    background: #ff6347;
-  }
-  .cta-buttonsec a{
-    text-decoration: none;
-    color: #faf1e8;
-  }
+ 
+  .cta-button-primarys {
+  display: inline-block;
+  background: #00BCD4;
+  color: white;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-  .cta-buttonsecc{
-    display: inline-block;
-    background: #00BCD4;
-    color: white;
-    padding: 10px 25px;
-    font-size: 1.3rem;
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  .cta-buttonsecc {
-    font-family: "Poppins", sans-serif;
-    
-  }
-  .cta-buttonsec:hover {
-    background: #ff6347;
-  }
-  .cta-buttonsec a{
-    text-decoration: none;
-    color: #faf1e8;
-  }
+.cta-button-primarys:hover { /* Remove the space */
+  background: #ff6347;
+}
+
+.cta-button-primarys a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  font-style: normal;
+  color: #ffffff;
+}
+  .cta-button-primary {
+  display: inline-block;
+  background: #00BCD4;
+  color: white;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-button-primary:hover { /* Remove the space */
+  background: #ff6347;
+}
+
+.cta-button-primary a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  font-style: normal;
+  color: #ffffff;
+}
+
+.cta-button-secondary {
+  display: inline-block;
+  background: #FF6A3A;
+  color: white;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-button-secondary:hover { /* Remove the space */
+  background: #00BCD4;
+}
+
+.cta-button-secondary a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  font-style: normal;
+  color: #ffffff;
+}
 
 
-  .cta-button a{
-    text-decoration: none;
-    color: #faf1e8;
-  }
-  .cta-button {
-    display: inline-block;
-    background: #00BCD4;
-    color: white;
-    padding: 10px 40px;
-    
-    border: none;
-    border-radius: 40px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  .cta-button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  .cta-button:hover {
-    background: #ff6347;
-  }
-  
+
   
   .pacifico-regular {
   font-family: "Pacifico", cursive;
@@ -407,7 +409,7 @@
   }
   
   .dot.active {
-    background: white;
+    background: #e5533d;
   }
   
   /* Wave */
@@ -640,15 +642,7 @@ Highlighting a word or two: Pacifico  */
   color: #ffffff;
 }
 
-.cta-button {
-  background-color:  #00BCD4;;
-  color: white;
-  padding: 10px 60px;
-  border: none;
-  cursor: pointer;
-  font-size: 2.1rem;
-  border-radius: 50px;
-}
+
 
 
 .trisply-turtles{
@@ -1024,6 +1018,29 @@ height:130px ;
   height: auto;
   border-radius: 15px; /* Border radius for rounded corners */
   object-fit: cover; /* Ensure images cover the space */
+}
+.cta-button-primarys {
+  display: inline-block;
+  background: #00BCD4;
+  color: white;
+  padding: 7px 30px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cta-button-primarys:hover { /* Remove the space */
+  background: #ff6347;
+}
+
+.cta-button-primarys a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  font-style: normal;
+  color: #ffffff;
 }
 }
 
