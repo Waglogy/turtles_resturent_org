@@ -235,6 +235,35 @@
 }
 
 
+@media (max-width: 768px) {
+  input,
+  textarea {
+    font-size: 1rem; /* Increase font size for better readability */
+    padding: 12px; /* Add more padding */
+    border-radius: 15px; /* Slightly larger radius for a rounded effect */
+  }
+
+  .submit-button {
+    font-size: 1.4rem; /* Adjust button size */
+    padding: 18px; /* Increase padding for the button */
+    border-radius: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  input,
+  textarea {
+    font-size: 1.1rem; /* Even larger font for smaller devices */
+    padding: 10px 4px ; /* Further increase padding */
+    border-radius: 20px; /* Make fields more rounded */
+  }
+
+  .submit-button {
+    font-size: 1.2rem; /* Adjust button size */
+    padding: 16px; /* Adjust padding for the button */
+    border-radius: 20px;
+  }
+}
 
 
   </style>
