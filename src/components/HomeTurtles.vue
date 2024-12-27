@@ -15,7 +15,7 @@
   </div>
   
   <!-- Semi-transparent overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div class="absolute inset-0 bg-black bg-opacity-5"></div>
   
   <!-- Content -->
   <div class="absolute inset-0 flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24">
@@ -107,21 +107,27 @@
   </section>
 
 
-   <!-- Turtle Cutout Section -->
-   <section class="py-16 px-6 sm:px-12 lg:px-24 relative overflow-hidden">
-      <div class="max-w-4xl mx-auto text-center relative z-10">
-        <h1 class="text-4xl font-pacifico text-olive-green mb-4">Oh, and don't miss out on the Tipsy Turtle!</h1>
-        <p class="text-xl mb-8">One per person, please!</p>
-        <a href="/bar-menu" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
-          Sip Through Our Bar Menu
-        </a>
-      </div>
-      <img :src="trispy" alt="Turtle Cutout" class="absolute top-3 bottom-20 right-9 w-full h-full max-w-sm">
-    </section>
+  <section class="py-0 px-6 sm:px-12 lg:px-24 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col sm:flex-row items-center sm:items-start sm:justify-between">
+    <div class="text-center sm:text-left sm:mr-8 mb-8 sm:mb-0">
+      <h1 class="text-4xl font-pacifico text-olive-green mb-4">Oh, and don't miss out on the Tipsy Turtle!</h1>
+      <p class="text-xl mb-8">One per person, please!</p>
+      <a href="/https://drive.google.com/file/d/1mergqwzSBot9aZVyITUeoGuQ3h_udxZF/view?usp=sharing" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
+        Sip Through Our Bar Menu
+      </a>
+    </div>
+    <!-- Adjusting the image placement -->
+    <img 
+      :src="trispy" 
+      alt="Turtle Cutout" 
+      class="w-full max-w-sm sm:mt-8 sm:mx-auto sm:top-auto sm:right-auto"
+    >
+  </div>
+</section>
 
 
    <!-- Customer Reviews Section -->
-   <section class="py-16 px-6 sm:px-12 lg:px-24 bg-beige-100 mt-6">
+   <section class="py-16 px-6 sm:px-12 lg:px-24 bg-beige-100 ">
       <h1 class="text-4xl font-pacifico text-olive-green mb-8 text-center">Turtley Good Times</h1>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         <div v-for="(photo, index) in customerPhotos" :key="index" class="aspect-square overflow-hidden rounded-lg">
@@ -208,7 +214,7 @@
       description: 'Immerse yourself in the local flavors and atmosphere',
       image: slide3,
       ctaText: 'Explore Menu',
-      ctaLink: '/menu'
+      ctaLink: 'https://drive.google.com/file/d/1mergqwzSBot9aZVyITUeoGuQ3h_udxZF/view?usp=sharing'
     }
   ];
   
@@ -235,21 +241,21 @@
       title: 'Live Music Night',
       date: 'Every Friday, 7 PM',
       image: slide1,
-      link: '/events/live-music'
+      link: '/book-event'
     },
     {
       id: 2,
       title: 'Seafood Festival',
       date: 'First Saturday of every month',
       image:slide3,
-      link: '/events/seafood-festival'
+      link: '/book-event'
     },
     {
       id: 3,
       title: 'Sunset Yoga',
       date: 'Every Sunday, 5 PM',
       image: slide2,
-      link: '/events/sunset-yoga'
+      link: '/book-event'
     }
   ];
   

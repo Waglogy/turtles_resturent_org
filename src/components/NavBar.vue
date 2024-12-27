@@ -11,7 +11,7 @@
     <div :class="['navlist', { active: isMenuOpen }]">
       <ul>
         <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li> <!-- New About link -->
+        <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
         <li><a href="https://drive.google.com/file/d/1mergqwzSBot9aZVyITUeoGuQ3h_udxZF/view?usp=sharing" target="blank"><i class="fas fa-utensils"></i> Menu</a></li>
         <li><a href="/reserve"><i class="fas fa-calendar-check"></i> Reserve</a></li>
         <li><a href="/contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
@@ -46,12 +46,30 @@ nav {
   z-index: 10;
 }
 
+/* Logo styling */
 .navlogo img {
   width: 100px;
   padding: 10px;
   border-radius: 8px;
 }
 
+/* Hamburger menu styling */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Navigation list styles */
 .navlist {
   display: flex;
   transition: transform 0.3s ease-in-out;
@@ -72,35 +90,47 @@ nav {
 
 .navlist li a {
   color: #3a6507;
-  /* Charcoal Grey */
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
-  font-weight: 600;
   text-decoration: none;
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between icon and text */
+  gap: 8px;
 }
 
 .navlist li a:hover {
-  color: #333333;  /* Olive Green */
-  transform: scale(1.1); /* Slight scaling effect */
+  color: #333333;
+  transform: scale(1.1);
 }
 
-/* Responsive Styles */
+/* Updated Responsive Styles */
 @media (max-width: 768px) {
+  nav {
+    background-color: #e5533d; /* Navbar color */
+    height: 80px; /* Increased height */
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navlogo img {
+    height: 50px; /* Adjusted for smaller screens */
+  }
+
   .navlist {
     display: none;
     flex-direction: column;
+    align-items: center; /* Center alignment */
+    justify-content: center; /* Center alignment */
     position: absolute;
-    top: 81px;
-    right: 50px;
-    background-color: #faf1e8;
-    border-radius: 1px;
-    padding: 20px;
-    gap: 10px;
+    top: 80px; /* Below navbar */
+    left: 0;
+    width: 100%; /* Full width */
+    height: calc(100vh - 80px); /* Full screen minus navbar height */
+    background-color: #e5533d;
     z-index: 100;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
@@ -111,19 +141,17 @@ nav {
 
   .navlist ul {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
   }
 
   .navlist li a {
-    color: #333333;
+    color: #ffffff; /* Visible on new background */
+    font-size: 20px;
   }
 
-  .hamburger {
-    display: flex;
-  }
-
-  .navlogo img {
-    height: 40px; /* Adjust for smaller screens */
+  .hamburger .bar {
+    background-color: #ffffff; /* Contrast with navbar */
   }
 }
 </style>
+

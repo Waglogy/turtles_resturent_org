@@ -1,76 +1,88 @@
 <template>
-    <div>
-      <!-- Hero Section -->
-      <header class="bg-olive-green text-white py-8">
-        <div class="container mx-auto text-center">
-          <h1 class="text-4xl font-bold">Event Booking</h1>
-          <p class="mt-2 text-lg">Join us for an unforgettable experience!</p>
-          <p class="mt-4">Date: <span class="font-semibold">March 25, 2024</span> | Location: <span class="font-semibold">Gangtok</span></p>
-        </div>
-      </header>
-  
-      <!-- Booking Form -->
-      <section class="py-12 bg-gray-100">
-        <div class="container mx-auto max-w-lg bg-white shadow-md rounded-lg p-6">
-          <h2 class="text-2xl font-bold text-center mb-4">Reserve Your Spot</h2>
-          <form @submit.prevent="submitBooking">
-            <div class="mb-4">
-              <label for="name" class="block text-gray-700">Name</label>
-              <input type="text" id="name" v-model="form.name" placeholder="Your Name"
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-olive-green">
+    <div class="event-booking-page">
+      <div class="event-header">
+        <h1 class="event-title">Event Booking</h1>
+        <p class="event-subtitle">Book your spot for an exciting event!</p>
+      </div>
+      <div class="event-container">
+        <!-- Event Booking Form -->
+        <div class="event-form">
+          <h2>Book Your Event</h2>
+          <form @submit.prevent="submitBookingForm">
+            <div class="form-group">
+              <label for="event-name">Event Name</label>
+              <input
+                type="text"
+                id="event-name"
+                v-model="eventForm.eventName"
+                placeholder="Enter the event name"
+                required
+              />
             </div>
-            <div class="mb-4">
-              <label for="email" class="block text-gray-700">Email</label>
-              <input type="email" id="email" v-model="form.email" placeholder="Your Email"
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-olive-green">
+            <div class="form-group">
+              <label for="full-name">Full Name</label>
+              <input
+                type="text"
+                id="full-name"
+                v-model="eventForm.fullName"
+                placeholder="Enter your full name"
+                required
+              />
             </div>
-            <div class="mb-4">
-              <label for="tickets" class="block text-gray-700">Number of Tickets</label>
-              <select id="tickets" v-model="form.tickets"
-                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring focus:ring-olive-green">
-                <option value="" disabled>Select Number of Tickets</option>
-                <option v-for="n in 10" :key="n" :value="n">{{ n }}</option>
-              </select>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                v-model="eventForm.email"
+                placeholder="Enter your email"
+                required
+              />
             </div>
-            <button type="submit"
-              class="w-full bg-olive-green text-white font-bold py-2 px-4 rounded-lg hover:bg-olive-green-dark">
-              Book Now
-            </button>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                v-model="eventForm.phone"
+                placeholder="Enter your phone number"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="number-of-guests">Number of Guests</label>
+              <input
+                type="number"
+                id="number-of-guests"
+                v-model="eventForm.guests"
+                placeholder="Enter number of guests"
+                min="1"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Message (Optional)</label>
+              <textarea
+                id="message"
+                v-model="eventForm.message"
+                placeholder="Any special requests or message"
+                rows="4"
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-button">Book Event</button>
           </form>
         </div>
-      </section>
   
-      <!-- Event Details Section -->
-      <section class="py-12">
-        <div class="container mx-auto">
-          <h2 class="text-3xl font-bold text-center text-charcoal-gray">Event Details</h2>
-          <p class="text-center mt-4 text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. This event will cover topics such as innovation,
-            leadership, and networking.
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-              <h3 class="text-xl font-semibold mb-2">Session 1: Innovation</h3>
-              <p class="text-gray-600">Explore the latest trends in innovation.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-              <h3 class="text-xl font-semibold mb-2">Session 2: Leadership</h3>
-              <p class="text-gray-600">Learn about effective leadership techniques.</p>
-            </div>
-            <div class="p-6 bg-white shadow-lg rounded-lg">
-              <h3 class="text-xl font-semibold mb-2">Session 3: Networking</h3>
-              <p class="text-gray-600">Meet industry experts and build connections.</p>
-            </div>
-          </div>
+        <!-- Event Information -->
+        <div class="event-info">
+          <h2>Upcoming Events</h2>
+          <ul>
+            <li>Event 1: Annual Conference - Date: 2024-01-15</li>
+            <li>Event 2: Workshop on Innovation - Date: 2024-02-20</li>
+            <li>Event 3: Networking Gala - Date: 2024-03-05</li>
+          </ul>
         </div>
-      </section>
-  
-      <!-- Footer -->
-      <footer class="bg-charcoal-gray text-white py-6">
-        <div class="container mx-auto text-center">
-          <p>&copy; 2024 Turtles Restaurant & Bar. All rights reserved.</p>
-        </div>
-      </footer>
+      </div>
     </div>
   </template>
   
@@ -78,33 +90,192 @@
   export default {
     data() {
       return {
-        form: {
-          name: '',
-          email: '',
-          tickets: '',
+        eventForm: {
+          eventName: "",
+          fullName: "",
+          email: "",
+          phone: "",
+          guests: 1,
+          message: "",
         },
       };
     },
     methods: {
-      submitBooking() {
-        // Handle booking submission
-        alert(`Thank you, ${this.form.name}! Your booking for ${this.form.tickets} tickets has been submitted.`);
+      submitBookingForm() {
+        const { eventName, fullName, email, phone, guests, message } = this.eventForm;
+        const confirmationMessage = `
+          Thank you, ${fullName}! 
+          You've successfully booked for "${eventName}". 
+          We will send further details to ${email}.
+          Contact: ${phone}
+          Number of Guests: ${guests}
+          Special Message: ${message ? message : "No special message."}
+        `;
+        alert(confirmationMessage);
+  
+        // Clear form after submission
+        this.eventForm.eventName = "";
+        this.eventForm.fullName = "";
+        this.eventForm.email = "";
+        this.eventForm.phone = "";
+        this.eventForm.guests = 1;
+        this.eventForm.message = "";
       },
     },
   };
   </script>
   
-  <style>
-  .bg-olive-green {
-    background-color: #3A6507;
+  <style scoped>
+  .event-booking-page {
+    padding: 50px;
+    background: url('../assets/19.jpg') center/cover no-repeat;
+    font-family: "Poppins", sans-serif;
+    color: #333;
   }
   
-  .bg-olive-green-dark {
-    background-color: #2C4E05;
+  .event-header {
+    text-align: center;
+    margin-bottom: 40px;
   }
   
-  .text-charcoal-gray {
-    color: #333333;
+  .event-title {
+    font-family: "Pacifico", cursive;
+    font-size: 2.5rem;
+    color: #00BCD4;
+  }
+  
+  .event-subtitle {
+    font-size: 1.2rem;
+    color: #ffffff;
+  }
+  
+  .event-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .event-form,
+  .event-info {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    max-width: 500px;
+  }
+  
+  .event-form h2,
+  .event-info h2 {
+    margin-bottom: 15px;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.8rem;
+    color: #333;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input,
+  textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 35px;
+    font-size: 1rem;
+  }
+  
+  .submit-button {
+    background: #00BCD4;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .submit-button:hover {
+    background: #ff6347;
+  }
+  
+  .event-info ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .event-info li {
+    margin-bottom: 10px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .event-booking-page {
+      padding: 30px;
+    }
+  
+    .event-header {
+      margin-bottom: 30px;
+    }
+  
+    .event-title {
+      font-size: 2rem;
+    }
+  
+    .event-subtitle {
+      font-size: 1rem;
+    }
+  
+    .event-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .event-form,
+    .event-info {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .event-form h2,
+    .event-info h2 {
+      font-size: 1.5rem;
+    }
+  
+    input,
+    textarea {
+      width: 95%;
+      font-size: 0.9rem;
+    }
+  
+    .submit-button {
+      padding: 12px;
+      font-size: 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .event-title {
+      font-size: 1.8rem;
+    }
+  
+    .event-subtitle {
+      font-size: 0.9rem;
+    }
+  
+    .submit-button {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
   }
   </style>
   
