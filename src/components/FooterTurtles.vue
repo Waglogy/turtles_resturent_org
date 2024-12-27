@@ -1,135 +1,95 @@
 <template>
-    <footer class="footer">
-     
+  <footer class="footer text-white py-12 px-6 sm:px-12 lg:px-24">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <h3 class="text-2xl font-pacifico mb-4">Turtles</h3>
+        <p>Experience the best of Goan cuisine and vibes at Morjim Beach.</p>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-4">Contact Us</h4>
+        <p>Email: info@turtlesrestaurant.com</p>
+        <p>Phone: +91 123 456 7890</p>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-4">Location</h4>
+        <p>Morjim Beach, Goa, India</p>
+        <p>Open daily: 10 AM to 11 PM</p>
+      </div>
+      <div>
+        <h4 class="text-xl font-bold mb-4">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="text-white hover:text-cyan-300 transition duration-300">Facebook</a>
+          <a href="#" class="text-white hover:text-cyan-300 transition duration-300">Instagram</a>
+          <a href="#" class="text-white hover:text-cyan-300 transition duration-300">Twitter</a>
+        </div>
+      </div>
+    </div>
 
-        <div class="footer-info">
-          <h2>About Us</h2>
-          <p>
-            Welcome to Turtles Beach Restaurant! Experience the finest dining in Goa.
-            Enjoy the view, food, and a relaxing atmosphere.
-          </p>
-        </div>
-  
-        <div class="footer-social">
-          <h2>Follow Us</h2>
-          <ul>
-            <li>
-              <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-            </li>
-            <li>
-              <a href="#" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            </li>
-            <li>
-              <a href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-            </li>
-          </ul>
-        </div>
-  
-        <div class="footer-contact">
-          <h2>Contact Us</h2>
-          <ul>
-            <li><i class="fas fa-phone-alt"></i> Phone: 1234567890</li>
-            <li><i class="fas fa-envelope"></i> Email: contact@turtles.in</li>
-          </ul>
-        </div>
+    <!-- CTA Buttons Section -->
+    <!-- <div class="cta-buttons mt-8 text-center">
+      <a href="tel:+911234567890" class="cta-btn text-lg bg-green-500 px-6 py-3 rounded-md text-white hover:bg-green-600 transition">Got questions? Call us now!</a>
+      <a href="https://goo.gl/maps" class="cta-btn text-lg bg-blue-500 px-6 py-3 rounded-md text-white hover:bg-blue-600 transition">Find Us</a>
+      <a href="/delivery" class="cta-btn text-lg bg-orange-500 px-6 py-3 rounded-md text-white hover:bg-orange-600 transition">Get a taste of Turtles at home!</a>
+    </div> -->
 
-    
-    </footer>
-  </template>
-  
-  <script>
-  export default {
-    name: "FooterTur",
-  };
-  </script>
-  
-  <style scoped>
-  .footer {
-    background: url('../assets/21.jpg') center/cover no-repeat;
-    color: white;
-    padding: 50px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 90%;
-    max-width: 1200px;
-  }
-  
-  .footer-info,
-  .footer-social,
-  .footer-contact {
-    flex: 1;
-    margin: 0 20px;
-  }
-  
-  .footer-info h2,
-  .footer-social h2,
-  .footer-contact h2 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-    
-  }
-  
-  .footer-info p,
-  .footer-social ul li,
-  .footer-contact ul li {
-    font-size: 1em;
-    line-height: 1.8em;
-    color:#333333;
-  }
-  
-  .footer-social ul,
-  .footer-contact ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .footer-social ul li,
-  .footer-contact ul li {
-    margin-bottom: 10px;
-    color:#333333;
-  }
-  
-  .footer-social a {
-    color:#333333;
-    text-decoration: none;
-    font-size: 1em;
-    transition: color 0.3s ease;
-  }
-  
-  .footer-social a:hover {
-    color: #ff6347;
-  }
-  
-  .footer-social i,
-  .footer-contact li {
-    margin-right: 10px;
-    font-size: 1em;
-    
-  }
-  
-  @media screen and (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      text-align: center;
-    }
-    .footer{
-      flex-direction: column;
-    }
-  
-    .footer-info,
-    .footer-social,
-    .footer-contact {
-      margin: 0px 0;
-      text-align: center;
-    }
-  }
-  </style>
-  
+    <!-- Copyright Section at the Bottom -->
+    <div class="mt-8 text-center footer-copyright">
+      <p>&copy; 2023 Turtles Restaurant & Bar. All rights reserved.</p>
+    </div>
+  </footer>
+</template>
+
+<script>
+export default {
+  name: "FooterTur",
+};
+</script>
+
+<style scoped>
+.footer {
+  position: relative;
+  background: url('../assets/21.jpg') center/cover no-repeat;
+  color: white;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value (0.5) for transparency */
+  z-index: 1;
+}
+
+.footer > * {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.cta-btn {
+  font-size: 1.125rem;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.footer-copyright {
+  margin-top: 32px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+</style>

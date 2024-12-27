@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeTurtles from '@/components/HomeTurtles.vue';
 import Contactturtles from '@/components/ContactTurtles.vue';
 import Reserveturtles from '@/components/ReserveTurtles.vue';
-import Menuturtles from '@/components/MenuTurtles.vue';
+import BookEvent  from '@/components/BookEvent.vue';
 import FooterTurtles from '@/components/FooterTurtles.vue';
+import AboutTurtles from '@/components/AboutTurtles.vue';
 
 const routes = [
   {
@@ -17,9 +18,14 @@ const routes = [
     component: Contactturtles,
   },
   {
-    path: '/menu',
-    name: 'Menuturtles',
-    component: Menuturtles,
+    path: '/book-event',
+    name:'BookEvent',
+    component: BookEvent,
+  },
+  {
+    path: '/about',
+    name: 'Aboutturtles',
+    component: AboutTurtles,
   },
   {
     path: '/reserve',
