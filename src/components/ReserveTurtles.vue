@@ -1,7 +1,7 @@
 <template>
     <div class="reserve-page">
       <div class="booking-form">
-        <h2>Reserve Your Spot at Turtles</h2>
+        <h1>Reserve Your Spot at Turtles</h1>
         <form @submit.prevent="sendToWhatsApp">
           <div class="form-group">
             <label for="name">Full Name</label>
@@ -112,9 +112,9 @@
     width: 100%;
   }
   
-  .booking-form h2 {
+  .booking-form h1 {
     margin-bottom: 20px;
-    
+    font-size: xx-large;
     text-align: center;
    
   }

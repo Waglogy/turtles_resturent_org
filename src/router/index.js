@@ -6,6 +6,12 @@ import BookEvent  from '@/components/BookEvent.vue';
 import FooterTurtles from '@/components/FooterTurtles.vue';
 import AboutTurtles from '@/components/AboutTurtles.vue';
 
+
+//Admin routes
+import AdminLogin from "../components/Admin/TurtlesLogin.vue"
+import TurtlesDashboard from '@/components/Admin/TurtlesDashboard.vue';
+import TurtlesContactandevnet from '@/components/Admin/TurtlesContactandevnet.vue';
+import TurtlesEvents from '@/components/Admin/TurtlesEvents.vue';
 const routes = [
   {
     path: '/',
@@ -36,7 +42,28 @@ const routes = [
     path: '/footer',
     name: 'FooterTurtles',
     component: FooterTurtles,
-  }
+  }, 
+  {
+    path: '/Admin-login',
+    name: 'AdminLogin',
+    component: AdminLogin,
+  },
+  {
+    path: '/Admin-dashboard',
+    name: 'TurtlesDashboard',
+    component: TurtlesDashboard,
+  },
+  {
+    path: '/contact-events',
+    name: 'TurtlesContactandevnet',
+    component: TurtlesContactandevnet,
+  },
+   {
+    path: '/add-events',
+    name: 'TurtlesEvents',
+    component: TurtlesEvents ,
+  },
+
 ];
 
 const router = createRouter({

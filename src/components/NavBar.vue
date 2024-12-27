@@ -1,7 +1,7 @@
 <template>
   <nav>
     <div class="navlogo">
-      <img src="../assets/logo .png" alt="Turtles Logo" />
+      <img src="../assets/Turtles_Black_Logo.png" alt="Turtles Logo" />
     </div>
     <div class="hamburger" @click="toggleMenu">
       <div class="bar"></div>
@@ -40,7 +40,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 30px;
   background-color: #faf1e8;
   position: relative;
   z-index: 10;
@@ -89,7 +89,8 @@ nav {
 }
 
 .navlist li a {
-  color: #3a6507;
+  color: #333333;
+ 
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
@@ -101,14 +102,14 @@ nav {
 }
 
 .navlist li a:hover {
-  color: #333333;
+  color: #3a6507;
   transform: scale(1.1);
 }
 
 /* Updated Responsive Styles */
 @media (max-width: 768px) {
   nav {
-    background-color: #e5533d; /* Navbar color */
+    background-color:  #faf1e8;; /* Navbar color */
     height: 80px; /* Increased height */
   }
 

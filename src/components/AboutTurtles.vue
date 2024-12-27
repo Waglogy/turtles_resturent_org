@@ -47,7 +47,7 @@
       <section class="py-16 px-6 sm:px-12 lg:px-24 text-center">
         <h2 class="text-3xl sm:text-4xl font-pacifico text-olive-green mb-8">Experience the Turtles Difference</h2>
         <p class="text-xl mb-8 max-w-2xl mx-auto">Come and immerse yourself in the unique atmosphere of Turtles Restaurant & Bar. Enjoy our delicious cuisine, refreshing drinks, and breathtaking views of Morjim Beach.</p>
-        <a href="/reserve" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">
+        <a href="/reserve" class="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">
           Reserve Your Table
         </a>
       </section>

@@ -2,7 +2,7 @@
     <div class="body">
      
      
-      <section class="relative h-[85vh]">
+      <section class="relative section-wave h-[85vh]" data-aos="fade-up">
   <!-- Background images -->
   <div class="absolute inset-0 bg-center transition-opacity duration-500 ease-in-out"
        v-for="(slide, index) in heroSlides" :key="slide.id"
