@@ -74,7 +74,7 @@ export default {
             console.log("Event data:", formData)
 
             // Replace with your API endpoint or action
-            fetch("http://localhost:3001/api/events", {
+            fetch("https://turtles-steel.vercel.app/api/events", {
                 method: "POST",
                 body: formData,
             })
