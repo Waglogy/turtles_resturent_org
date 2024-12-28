@@ -15,7 +15,7 @@
   </div>
   
   <!-- Semi-transparent overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-5"></div>
+  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
   
   <!-- Content -->
   <div class="absolute inset-0 flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24">
@@ -100,7 +100,7 @@
       </button>
     </div>
     <div class="text-center mt-12">
-      <a href="https://drive.google.com/file/d/1mergqwzSBot9aZVyITUeoGuQ3h_udxZF/view?usp=sharing" target="blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
+      <a href="/Turtles_Menu .pdf" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
         Check out our Full Menu
       </a>
     </div>
@@ -112,7 +112,7 @@
     <div class="text-center sm:text-left sm:mr-8 mb-8 sm:mb-0">
       <h1 class="text-4xl font-pacifico text-olive-green mb-4">Oh, and don't miss out on the Tipsy Turtle!</h1>
       <p class="text-xl mb-8">One per person, please!</p>
-      <a href="/https://drive.google.com/file/d/1mergqwzSBot9aZVyITUeoGuQ3h_udxZF/view?usp=sharing" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
+      <a href="/Turtles_Menu .pdf" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
         Sip Through Our Bar Menu
       </a>
     </div>
@@ -177,11 +177,19 @@
   import slide1 from "../assets/banner1.jpg"
   import slide2 from "../assets/gallery/2.jpg"
   import slide3 from "../assets/banner3.jpg"
-  import food1 from "../assets/7.jpg"
-  import food2 from "../assets/8.jpg"
-  import food3 from "../assets/9.jpg"
-  import food4 from "../assets/10.jpg"
+  import food1 from "../assets/food/Cream Of Tomato Basil Soup.jpeg"
+  import food2 from "../assets/food/Drums Of Heaven (Chicken Lollipop)4.jpeg"
+  import food3 from "../assets/food/Eggs-Benedict-9.jpg"
+  import food4 from "../assets/food/Margarita Pizza.jpeg"
+  import food5 from "../assets/food/Papaya Lassi.jpeg"
+  import food6 from "../assets/food/Tomato_Cheese_Sandwich_Recipe-1.jpg"
+  import food7 from "../assets/food/Veg. Momo.jpeg"
+  import food8 from "../assets/food/Veg. Quesadilla.jpeg"
+  
+  
+
   import trispy from "../assets/11.png"
+
   import gall1 from "../assets/gallery/6.jpg"
   import gall2 from "../assets/gallery/2.jpg"
   import gall3 from "../assets/gallery/9.jpg"
@@ -214,7 +222,7 @@
       description: 'Immerse yourself in the local flavors and atmosphere',
       image: slide3,
       ctaText: 'Explore Menu',
-      ctaLink: 'https://drive.google.com/file/d/1mergqwzSBot9aZVyITUeoGuQ3h_udxZF/view?usp=sharing'
+      ctaLink: '/Turtles_Menu .pdf'
     }
   ];
   
@@ -260,14 +268,14 @@
   ];
   
   const menuHighlights = [
-  { id: 1, name: 'Goan Fish Curry', image: food1, description: 'Fresh catch of the day in a spicy coconut curry' },
-  { id: 2, name: 'Prawn Balchao', image: food2, description: 'Spicy and tangy prawns in a traditional Goan style' },
-  { id: 3, name: 'Vegetable Xacuti', image: food3, description: 'Mixed vegetables in a complex, spicy coconut sauce' },
-  { id: 4, name: 'Bebinca', image:  food4, description: 'Traditional Goan layered dessert' },
-  { id: 5, name: 'Chicken Cafreal', image:  food1, description: 'Spicy green chicken, a Goan Portuguese fusion' },
-  { id: 6, name: 'Pork Vindaloo', image:  food3, description: 'Fiery hot pork curry with a tangy twist' },
-  { id: 7, name: 'Kingfish Fry', image:  food4, description: 'Crispy fried kingfish with Goan spices' },
-  { id: 8, name: 'Serradura', image: food3, description: 'Portuguese-inspired dessert with cream and crushed biscuits' }
+  { id: 1, name: 'Cream Of Tomato Basil Soup', image: food1, description: 'Cream Of Tomato Basil Soup' },
+  { id: 2, name: 'Drums Of Heaven (Chicken Lollipop)', image: food2, description: 'Drums Of Heaven (Chicken Lollipop)' },
+  { id: 3, name: 'Egg Benedict', image: food3, description: 'Egg Benedict' },
+  { id: 4, name: 'Margarita Pizza', image:  food4, description: 'Margarita Pizza' },
+  { id: 5, name: 'Papaya Lassi', image:  food5, description: 'Papaya Lassi' },
+  { id: 6, name: 'Cheese Tomato Sandwich', image:  food6, description: 'Cheese Tomato Sandwich' },
+  { id: 7, name: 'Veg. Momo', image:  food7, description: 'Veg. Momo' },
+  { id: 8, name: 'Veg. Quesadilla', image: food8, description: 'eg. Quesadilla' }
 ];
 
 const currentSlides = ref(0); // Current slide index

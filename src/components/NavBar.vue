@@ -12,8 +12,11 @@
       <ul>
         <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="/about"><i class="fas fa-info-circle"></i> About</a></li>
-        <li><a href="https://drive.google.com/file/d/1mergqwzSBot9aZVyITUeoGuQ3h_udxZF/view?usp=sharing" target="blank"><i class="fas fa-utensils"></i> Menu</a></li>
-        <li><a href="/reserve"><i class="fas fa-calendar-check"></i> Reserve</a></li>
+        <li>
+  <a href="/Turtles_Menu .pdf" target="_blank">
+    <i class="fas fa-utensils"></i> Menu
+  </a>
+</li>        <li><a href="/reserve"><i class="fas fa-calendar-check"></i> Reserve</a></li>
         <li><a href="/contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
       </ul>
     </div>
