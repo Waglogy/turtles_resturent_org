@@ -174,22 +174,22 @@
     
   <script setup>
   import { ref, onMounted, onUnmounted } from 'vue';
-  import slide1 from "../assets/2.jpg"
-  import slide2 from "../assets/15.jpg"
-  import slide3 from "../assets/img3.jpg"
+  import slide1 from "../assets/banner1.jpg"
+  import slide2 from "../assets/gallery/2.jpg"
+  import slide3 from "../assets/banner3.jpg"
   import food1 from "../assets/7.jpg"
   import food2 from "../assets/8.jpg"
   import food3 from "../assets/9.jpg"
   import food4 from "../assets/10.jpg"
   import trispy from "../assets/11.png"
-  import gall1 from "../assets/12.jpg"
-  import gall2 from "../assets/13.jpg"
-  import gall3 from "../assets/14.jpg"
-  import gall4 from "../assets/15.jpg"
-  import gall5 from "../assets/16.jpg"
-  import gall6 from "../assets/17.jpg"
-  import gall7 from "../assets/18.jpg"
-  import gall8 from "../assets/19.jpg"
+  import gall1 from "../assets/gallery/6.jpg"
+  import gall2 from "../assets/gallery/2.jpg"
+  import gall3 from "../assets/gallery/9.jpg"
+  import gall4 from "../assets/gallery/4.jpg"
+  import gall5 from "../assets/gallery/5.jpg"
+  import gall6 from "../assets/gallery/1.jpg"
+  import gall7 from "../assets/gallery/7.jpg"
+  import gall8 from "../assets/gallery/8.jpg"
   
   const heroSlides = [
     {

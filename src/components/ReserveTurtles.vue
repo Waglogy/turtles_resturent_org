@@ -99,7 +99,7 @@
     justify-content: center;
     align-items: center;
     height: auto;
-    background: url('../assets/1.jpg') center/cover no-repeat;
+    background: url('../assets/banner1.jpg') center/cover no-repeat;
     padding: 60px;
   }
   
