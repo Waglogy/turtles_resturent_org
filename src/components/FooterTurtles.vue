@@ -18,15 +18,13 @@
       <div>
         <h4 class="text-xl font-bold mb-4">Follow Us</h4>
         <div class="flex space-x-4">
-          <a href="#" class="text-white hover:text-cyan-300 transition duration-300">
+          <a href="https://www.facebook.com/profile.php?id=61554956255141" class="text-white hover:text-cyan-300 transition duration-300">
             <i class="fab fa-facebook-f"></i> <!-- Facebook Icon -->
           </a>
-          <a href="#" class="text-white hover:text-cyan-300 transition duration-300">
+          <a href="https://www.instagram.com/turtles.goa/" class="text-white hover:text-cyan-300 transition duration-300">
             <i class="fab fa-instagram"></i> <!-- Instagram Icon -->
           </a>
-          <a href="#" class="text-white hover:text-cyan-300 transition duration-300">
-            <i class="fab fa-twitter"></i> <!-- Twitter Icon -->
-          </a>
+         
         </div>
       </div>
     </div>

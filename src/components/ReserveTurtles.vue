@@ -1,61 +1,102 @@
 <template>
-    <div class="reserve-page">
-      <div class="booking-form">
-        <h1>Reserve Your Spot at Turtles</h1>
-        <form @submit.prevent="sendToWhatsApp">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              v-model="formData.name"
-              placeholder="Enter your name"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              v-model="formData.phone"
-              placeholder="Enter your phone number"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="date">Date</label>
-            <input type="date" id="date" v-model="formData.date" required />
-          </div>
-          <div class="form-group">
-            <label for="time">Time</label>
-            <input type="time" id="time" v-model="formData.time" required />
-          </div>
-          <div class="form-group">
-            <label for="guests">Number of Guests</label>
-            <input
-              type="number"
-              id="guests"
-              v-model="formData.guests"
-              placeholder="Enter the number of guests"
-              min="1"
-              required
-            />
-          </div>
-          <div class="form-group">
-            <label for="special">Special Requests</label>
-            <textarea
-              id="special"
-              v-model="formData.special"
-              placeholder="Add any special requests (optional)"
-            ></textarea>
-          </div>
-          <button type="submit" class="submit-button">Reserve Now</button>
-        </form>
-      </div>
+  <div class="reserve-page">
+    <div class="booking-form" data-aos="zoom-in">
+      <h1 data-aos="fade-down">Reserve Your Spot at Turtles</h1>
+      <form @submit.prevent="sendToWhatsApp">
+        <div class="form-group" data-aos="fade-up" data-aos-delay="100">
+          <label for="name">Full Name</label>
+          <input
+            type="text"
+            id="name"
+            v-model="formData.name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="form-group" data-aos="fade-up" data-aos-delay="200">
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            id="phone"
+            v-model="formData.phone"
+            placeholder="Enter your phone number"
+            required
+          />
+        </div>
+        <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+          <label for="date">Date</label>
+          <input type="date" id="date" v-model="formData.date" required />
+        </div>
+        <div class="form-group" data-aos="fade-up" data-aos-delay="400">
+          <label for="time">Time</label>
+          <input type="time" id="time" v-model="formData.time" required />
+        </div>
+        <div class="form-group" data-aos="fade-up" data-aos-delay="500">
+          <label for="guests">Number of Guests</label>
+          <input
+            type="number"
+            id="guests"
+            v-model="formData.guests"
+            placeholder="Enter the number of guests"
+            min="1"
+            required
+          />
+        </div>
+        <div class="form-group" data-aos="fade-up" data-aos-delay="600">
+          <label for="special">Special Requests</label>
+          <textarea
+            id="special"
+            v-model="formData.special"
+            placeholder="Add any special requests (optional)"
+          ></textarea>
+        </div>
+        <button type="submit" class="submit-button" data-aos="fade-up" data-aos-delay="700">
+          Reserve Now
+        </button>
+      </form>
     </div>
-  </template>
-  
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+const formData = ref({
+  name: "",
+  phone: "",
+  date: "",
+  time: "",
+  guests: 1,
+  special: "",
+});
+
+const sendToWhatsApp = () => {
+  const message = `
+    Hi, I would like to reserve a table at Turtles Beach, Goa:
+    - Name: ${formData.value.name}
+    - Phone: ${formData.value.phone}
+    - Date: ${formData.value.date}
+    - Time: ${formData.value.time}
+    - Number of Guests: ${formData.value.guests}
+    - Special Requests: ${formData.value.special || "None"}
+  `.trim();
+
+  const whatsappUrl = `https://wa.me/<Your_WhatsApp_Number>?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, "_blank");
+};
+
+onMounted(() => {
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-in-out',
+    once: false,
+    mirror: true,
+    offset: 50
+  });
+});
+</script>
   <script>
   export default {
     data() {
