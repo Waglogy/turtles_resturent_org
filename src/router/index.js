@@ -9,8 +9,7 @@ import AboutTurtles from '@/components/AboutTurtles.vue';
 
 //Admin routes
 import AdminLogin from "../components/Admin/TurtlesLogin.vue"
-import TurtlesDashboard from '@/components/Admin/TurtlesDashboard.vue';
-import TurtlesContactandevnet from '@/components/Admin/TurtlesContactandevnet.vue';
+
 import TurtlesEvents from '@/components/Admin/TurtlesEvents.vue';
 const routes = [
   {
@@ -48,16 +47,7 @@ const routes = [
     name: 'AdminLogin',
     component: AdminLogin,
   },
-  {
-    path: '/Admin-dashboard',
-    name: 'TurtlesDashboard',
-    component: TurtlesDashboard,
-  },
-  {
-    path: '/contact-events',
-    name: 'TurtlesContactandevnet',
-    component: TurtlesContactandevnet,
-  },
+  
    {
     path: '/add-events',
     name: 'TurtlesEvents',
