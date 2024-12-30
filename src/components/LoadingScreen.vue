@@ -8,7 +8,6 @@
           <div class="flipper right"></div>
         </div>
       </div>
-      <h2 class="loading-text font-pacifico">Breathe in the Ocean. Savor the Flavors.</h2>
       <div class="wave-container">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
@@ -40,7 +39,7 @@
   /* Updated wave container with increased height */
   .wave-container {
     background: #00BCD4;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -176,23 +175,6 @@
     }
   }
   
-  .loading-text {
-    margin-top: 2rem;
-    color: #3A6507;
-    font-size: 2rem;
-    animation: pulse 1.5s ease-in-out infinite;
-    z-index: 1001; /* Ensure text stays above waves */
-  }
-  
-  @keyframes pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
-  }
-  
   /* Responsive Design */
   @media (max-width: 768px) {
     .wave-container {
@@ -202,10 +184,6 @@
     .turtle-container {
       width: 80px;
       height: 80px;
-    }
-  
-    .loading-text {
-      font-size: 1.5rem;
     }
   }
   </style>
