@@ -8,6 +8,7 @@
           <div class="flipper right"></div>
         </div>
       </div>
+      <h1 class="loading-text font-pacifico">Breathe in the Ocean. Savor the Flavors.</h1>
       <div class="wave-container">
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
