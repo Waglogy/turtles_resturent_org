@@ -18,10 +18,10 @@
       <div>
         <h4 class="text-xl font-bold mb-4">Follow Us</h4>
         <div class="flex space-x-4">
-          <a href="https://www.facebook.com/profile.php?id=61554956255141" class="text-white hover:text-cyan-300 transition duration-300">
+          <a href="https://www.facebook.com/profile.php?id=61554956255141" target="_blank" class="text-white hover:text-cyan-300 transition duration-300">
             <i class="fab fa-facebook-f"></i> <!-- Facebook Icon -->
           </a>
-          <a href="https://www.instagram.com/turtles.goa/" class="text-white hover:text-cyan-300 transition duration-300">
+          <a href="https://www.instagram.com/turtles.goa/" target="_blank" class="text-white hover:text-cyan-300 transition duration-300">
             <i class="fab fa-instagram"></i> <!-- Instagram Icon -->
           </a>
          
@@ -39,7 +39,7 @@
     <!-- Copyright Section at the Bottom -->
     <div class="mt-8 text-center footer-copyright">
       <p>&copy; 2023 Turtles Restaurant & Bar. All rights reserved.</p>
-      <p>Made with love by <a href="https://www.waglogy.in" class="text-cyan-300 hover:text-cyan-400 transition">Waglogy</a></p>
+      <p>Made with love by <a href="https://www.waglogy.in" target="_blank" class="text-cyan-300 hover:text-cyan-400 transition">Waglogy</a></p>
     </div>
   </footer>
 </template>

@@ -7,10 +7,7 @@ import FooterTurtles from '@/components/FooterTurtles.vue';
 import AboutTurtles from '@/components/AboutTurtles.vue';
 
 
-//Admin routes
-import AdminLogin from "../components/Admin/TurtlesLogin.vue"
 
-import TurtlesEvents from '@/components/Admin/TurtlesEvents.vue';
 const routes = [
   {
     path: '/',
@@ -42,17 +39,8 @@ const routes = [
     name: 'FooterTurtles',
     component: FooterTurtles,
   }, 
-  {
-    path: '/Admin-login',
-    name: 'AdminLogin',
-    component: AdminLogin,
-  },
   
-   {
-    path: '/add-events',
-    name: 'TurtlesEvents',
-    component: TurtlesEvents ,
-  },
+  
 
 ];
 

@@ -20,7 +20,7 @@
       <div class="absolute inset-0 flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24" data-aos="fade-right">
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-pacifico text-white mb-4" v-html="heroSlides[currentSlide].title"></h1>
         <p style="color: white;" class="text-xl font-bold sm:text-2xl text-white mb-8 max-w-2xl" v-html="heroSlides[currentSlide].description"></p>
-        <a :href="heroSlides[currentSlide].ctaLink" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
+        <a :href="heroSlides[currentSlide].ctaLink" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
           {{ heroSlides[currentSlide].ctaText }}
         </a>
       </div>
@@ -55,7 +55,7 @@
           <div class="p-6">
             <h2 class="text-xl font-bold mb-2">{{ event.title }}</h2>
             <p class="text-gray-600 mb-4">{{ event.date }}</p>
-            <a :href="event.link" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300">
+            <a :href="event.link" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300">
               Reserve a Spot
             </a>
           </div>
@@ -216,7 +216,7 @@ const heroSlides = [
     description: 'Food, drinks, and ocean sounds - just show up!',
     image: slide2,
     ctaText: 'Navigate to Turtles',
-    ctaLink: 'https://goo.gl/maps/TurtlesRestaurant'
+    ctaLink: 'https://maps.app.goo.gl/pX7iM4cd1WRXsth57'
   },
   {
     id: 3,

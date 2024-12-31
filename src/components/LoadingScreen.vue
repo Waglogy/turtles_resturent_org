@@ -44,13 +44,13 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 300px; /* Increased height */
+    height: 500px; /* Increased height */
     overflow: hidden;
     transform: rotate(180deg); /* Flip the container upside down */
   }
   
   .wave {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 200%;
