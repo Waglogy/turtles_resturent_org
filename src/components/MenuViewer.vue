@@ -17,23 +17,31 @@
         <LoadingScreen />
       </div>
       
-      <!-- Using iframe for PDF viewing -->
+      <!-- Google Docs Viewer for better mobile compatibility -->
       <iframe
-        :src="`${pdfUrl}#toolbar=0`"
+        :src="`https://docs.google.com/viewer?url=${encodeURIComponent(fullPdfUrl)}&embedded=true`"
         class="pdf-frame"
         @load="handleLoaded"
         @error="handleError"
+        frameborder="0"
       ></iframe>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import LoadingScreen from './LoadingScreen.vue';
 
 const pdfUrl = '/Turtles_Menu.pdf';
 const loading = ref(true);
+const fullPdfUrl = ref('');
+
+onMounted(() => {
+  // Convert relative URL to absolute URL
+  const baseUrl = window.location.origin;
+  fullPdfUrl.value = `${baseUrl}${pdfUrl}`;
+});
 
 const handleLoaded = () => {
   loading.value = false;
@@ -42,6 +50,11 @@ const handleLoaded = () => {
 const handleError = (error) => {
   console.error('PDF Error:', error);
   loading.value = false;
+  // Fallback to direct PDF viewing if Google Docs viewer fails
+  const iframe = document.querySelector('.pdf-frame');
+  if (iframe) {
+    iframe.src = pdfUrl;
+  }
 };
 </script>
 
@@ -78,12 +91,14 @@ const handleError = (error) => {
   background: white;
   border-radius: 8px;
   overflow: hidden;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 .pdf-frame {
   width: 100%;
   height: 100%;
   border: none;
+  background: white;
 }
 
 .loading-overlay {
@@ -127,6 +142,7 @@ const handleError = (error) => {
   transform: translateY(-2px);
 }
 
+/* Mobile Optimizations */
 @media (max-width: 768px) {
   .menu-viewer {
     padding: 10px;
@@ -140,6 +156,28 @@ const handleError = (error) => {
   .toolbar-buttons {
     width: 100%;
     justify-content: center;
+  }
+
+  .pdf-container {
+    margin: 0 -10px;
+    border-radius: 0;
+  }
+
+  .pdf-frame {
+    min-height: calc(100vh - 150px);
+  }
+
+  /* Prevent rubber-banding on iOS */
+  .menu-viewer {
+    position: fixed;
+    overflow: hidden;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .pdf-container {
+    background: #ffffff;
   }
 }
 </style> 
