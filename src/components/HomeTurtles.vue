@@ -81,7 +81,13 @@
               <p class="text-gray-600 mb-4">{{ formatTime(event.time) }}</p>
               <p class="text-gray-700 mb-4">{{ event.description }}</p>
               <router-link 
-                :to="{ name: 'BookEvent', query: { eventId: event._id, eventName: event.title }}" 
+                :to="{ 
+                  name: 'BookEvent',
+                  query: { 
+                    eventId: event._id,
+                    eventName: event.title
+                  }
+                }" 
                 class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300"
               >
                 Book a Spot

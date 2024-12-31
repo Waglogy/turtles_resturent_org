@@ -10,13 +10,13 @@
           <h2>Book Your Event</h2>
           <form @submit.prevent="submitBookingForm">
             <div class="form-group">
-              <label for="event-name">Event Name</label>
+              <label for="eventName">Event Name</label>
               <input
                 type="text"
-                id="event-name"
+                id="eventName"
                 v-model="eventForm.eventName"
-                placeholder="Enter the event name"
-                required
+                readonly
+                class="readonly-field"
               />
             </div>
             <div class="form-group">
@@ -85,81 +85,64 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    data() {
-      return {
-        eventForm: {
-          eventName: "",
-          fullName: "",
-          email: "",
-          phone: "",
-          guests: 1,
-          message: "",
+  <script setup>
+  import { ref, onMounted } from 'vue';
+  import { useRoute } from 'vue-router';
+
+  const route = useRoute();
+
+  const eventForm = ref({
+    eventId: '',
+    eventName: '',
+    fullName: '',
+    email: '',
+    phone: '',
+    guests: 1,
+    message: ''
+  });
+
+  // Initialize form with URL parameters
+  onMounted(() => {
+    const { eventId, eventName } = route.query;
+    if (eventId && eventName) {
+      eventForm.value.eventId = eventId;
+      eventForm.value.eventName = decodeURIComponent(eventName);
+    }
+  });
+
+  const isSubmitting = ref(false);
+
+  const submitBookingForm = async () => {
+    isSubmitting.value = true;
+    try {
+      const response = await fetch('https://turtles-steel.vercel.app/api/book-event', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        isSubmitting: false,
-      };
-    },
-    methods: {
-      async submitBookingForm() {
-        this.isSubmitting = true;
-        try {
-          // Create base request data
-          const requestData = {
-            eventName: this.eventForm.eventName,
-            fullName: this.eventForm.fullName,
-            email: this.eventForm.email,
-            phone: this.eventForm.phone,
-            numberOfGuests: parseInt(this.eventForm.guests),
-          };
+        body: JSON.stringify({
+          eventId: eventForm.value.eventId,
+          eventName: eventForm.value.eventName,
+          fullName: eventForm.value.fullName,
+          email: eventForm.value.email,
+          phone: eventForm.value.phone,
+          numberOfGuests: parseInt(eventForm.value.guests),
+          message: eventForm.value.message.trim() || undefined
+        })
+      });
 
-          // Only add message if it's not empty
-          if (this.eventForm.message.trim()) {
-            requestData.message = this.eventForm.message;
-          }
-
-          console.log('Sending data:', requestData); // Debug log
-
-          const response = await fetch('https://turtles-steel.vercel.app/api/events', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(requestData)
-          });
-
-          console.log('Response status:', response.status); // Debug log
-
-          if (!response.ok) {
-            const errorData = await response.json();
-            console.error('Server error:', errorData); // Debug log
-            throw new Error(errorData.message || 'Booking failed');
-          }
-
-          const responseData = await response.json();
-          console.log('Success response:', responseData); // Debug log
-          
-          alert(`Thank you, ${this.eventForm.fullName}! Your booking has been confirmed.`);
-          this.resetForm();
-        } catch (error) {
-          console.error('Submission error:', error);
-          alert(`Error: ${error.message || 'Failed to submit booking. Please try again.'}`);
-        } finally {
-          this.isSubmitting = false;
-        }
-      },
-
-      resetForm() {
-        this.eventForm = {
-          eventName: "",
-          fullName: "",
-          email: "",
-          phone: "",
-          guests: 1,
-          message: "",
-        };
+      if (!response.ok) {
+        throw new Error('Booking failed');
       }
-    },
+
+      alert(`Thank you, ${eventForm.value.fullName}! Your booking has been confirmed.`);
+      // Reset form or redirect
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to book event. Please try again.');
+    } finally {
+      isSubmitting.value = false;
+    }
   };
   </script>
   
@@ -314,6 +297,11 @@
       padding: 10px;
       font-size: 0.9rem;
     }
+  }
+  
+  .readonly-field {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
   }
   </style>
   
