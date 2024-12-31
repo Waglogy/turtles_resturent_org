@@ -84,7 +84,7 @@
                 :to="{ name: 'BookEvent', query: { eventId: event._id, eventName: event.title }}" 
                 class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300"
               >
-                Reserve a Spot
+                Book a Spot
               </router-link>
             </div>
           </div>
