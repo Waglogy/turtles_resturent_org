@@ -104,7 +104,6 @@
       async submitBookingForm() {
         this.isSubmitting = true;
         try {
-          // Send data to backend
           const response = await fetch('YOUR_API_ENDPOINT/book-event', {
             method: 'POST',
             headers: {
@@ -117,7 +116,7 @@
             throw new Error('Booking failed');
           }
 
-          const data = await response.json();
+          await response.json();
           
           // Show success message
           alert(`Thank you, ${this.eventForm.fullName}! Your booking has been confirmed.`);
