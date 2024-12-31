@@ -77,8 +77,8 @@
             <img :src="event.image" :alt="event.title" class="w-full h-48 object-cover">
             <div class="p-6">
               <h2 class="text-xl font-bold mb-2">{{ event.title }}</h2>
-              <p class="text-gray-600 mb-2">{{ formatDate(event.eventDate) }}</p>
-              <p class="text-gray-600 mb-4">{{ formatTime(event.eventTime) }}</p>
+              <p class="text-gray-600 mb-2">{{ formatDate(event.date) }}</p>
+              <p class="text-gray-600 mb-4">{{ formatTime(event.time) }}</p>
               <p class="text-gray-700 mb-4">{{ event.description }}</p>
               <router-link 
                 :to="{ name: 'BookEvent', query: { eventId: event._id, eventName: event.title }}" 
@@ -324,7 +324,7 @@ const fetchEvents = async () => {
   try {
     loading.value = true;
     const response = await axios.get('https://turtles-steel.vercel.app/api/events');
-    events.value = response.data;
+    events.value = response.data.data;
   } catch (err) {
     console.error('Error fetching events:', err);
     error.value = 'Failed to load events. Please try again later.';

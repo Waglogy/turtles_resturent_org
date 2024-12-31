@@ -104,15 +104,19 @@
       async submitBookingForm() {
         this.isSubmitting = true;
         try {
-          // Format the data according to your API requirements
+          // Create base request data
           const requestData = {
             eventName: this.eventForm.eventName,
             fullName: this.eventForm.fullName,
             email: this.eventForm.email,
             phone: this.eventForm.phone,
             numberOfGuests: parseInt(this.eventForm.guests),
-            message: this.eventForm.message
           };
+
+          // Only add message if it's not empty
+          if (this.eventForm.message.trim()) {
+            requestData.message = this.eventForm.message;
+          }
 
           console.log('Sending data:', requestData); // Debug log
 
