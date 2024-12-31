@@ -134,9 +134,12 @@
         </button>
       </div>
       <div class="text-center mt-12">
-        <a href="/Turtles_Menu .pdf" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
+        <router-link 
+          :to="{ name: 'MenuViewer' }"
+          class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
+        >
           Check out our Full Menu
-        </a>
+        </router-link>
       </div>
     </section>
 
@@ -146,9 +149,12 @@
         <div class="text-center sm:text-left sm:mr-8 mb-8 sm:mb-0" data-aos="fade-right">
           <h1 class="text-4xl font-pacifico text-olive-green mb-4">Oh, and don't miss out on the Tipsy Turtle!</h1>
           <p class="text-xl mb-8">One per person, please!</p>
-          <a href="/Turtles_Menu .pdf" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
+          <router-link 
+            :to="{ name: 'MenuViewer' }"
+            class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
+          >
             Sip Through Our Bar Menu
-          </a>
+          </router-link>
         </div>
         <img 
           :src="trispy" 

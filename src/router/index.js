@@ -6,6 +6,7 @@ import BookEvent  from '@/components/BookEvent.vue';
 import FooterTurtles from '@/components/FooterTurtles.vue';
 import AboutTurtles from '@/components/AboutTurtles.vue';
 import LoadingScreen from '@/components/LoadingScreen.vue';
+import MenuViewer from '../components/MenuViewer.vue';
 
 
 
@@ -44,7 +45,12 @@ const routes = [
     path: '/footer',
     name: 'FooterTurtles',
     component: FooterTurtles,
-  }, 
+  },
+  {
+    path: '/menu-viewer',
+    name: 'MenuViewer',
+    component: MenuViewer
+  },
   
   
 

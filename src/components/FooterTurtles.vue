@@ -7,7 +7,7 @@
       </div>
       <div>
         <h4 class="text-xl font-bold mb-4">Contact Us</h4>
-        <p>Email: info@turtlesrestaurant.com</p>
+        <p>Email: turtlesmorjim@gmail.com</p>
         <p>Phone: +91 123 456 7890</p>
       </div>
       <div>
