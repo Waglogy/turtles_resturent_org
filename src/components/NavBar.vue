@@ -93,11 +93,10 @@ nav {
 
 .navlist li a {
   color: #333333;
- 
   font-size: 18px;
-  font-weight: bold;
+  font-weight: normal;
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
+  font-family: "Pacifico", cursive;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -151,6 +150,8 @@ nav {
   .navlist li a {
     color: #ffffff; /* Visible on new background */
     font-size: 20px;
+    font-family: "Pacifico", cursive;
+    font-weight: normal;
   }
 
   .hamburger .bar {
