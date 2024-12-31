@@ -45,21 +45,50 @@
     <!-- Events Section -->
     <section class="py-16 px-6 sm:px-12 lg:px-24" data-aos="fade-up">
       <h1 class="text-4xl font-pacifico text-olive-green mb-8 text-center">Upcoming Events</h1>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div v-for="event in events" 
-             :key="event.id" 
-             class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2"
-             data-aos="fade-up"
-             :data-aos-delay="event.id * 100">
-          <img :src="event.image" :alt="event.title" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h2 class="text-xl font-bold mb-2">{{ event.title }}</h2>
-            <p class="text-gray-600 mb-4">{{ event.date }}</p>
-            <a :href="event.link" target="_blank" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300">
-              Reserve a Spot
-            </a>
-          </div>
+      
+      <!-- Loading State -->
+      <div v-if="loading" class="text-center py-8">
+        <p class="text-gray-600">Loading events...</p>
+      </div>
+
+      <!-- Error State -->
+      <div v-else-if="error" class="text-center py-8">
+        <p class="text-red-500">{{ error }}</p>
+      </div>
+
+      <!-- Events Grid -->
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        <template v-if="events.length === 0">
+          <p class="col-span-full text-center text-gray-600">No upcoming events at the moment.</p>
+        </template>
+        
+        <!-- Center single event -->
+        <div v-if="events.length === 1" class="col-start-1 sm:col-start-1 lg:col-start-2">
+          <EventCard :event="events[0]" />
         </div>
+
+        <!-- Multiple events -->
+        <template v-else>
+          <div v-for="event in events" 
+               :key="event._id" 
+               class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 w-full max-w-sm"
+               data-aos="fade-up"
+               :data-aos-delay="100">
+            <img :src="event.image" :alt="event.title" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <h2 class="text-xl font-bold mb-2">{{ event.title }}</h2>
+              <p class="text-gray-600 mb-2">{{ formatDate(event.eventDate) }}</p>
+              <p class="text-gray-600 mb-4">{{ formatTime(event.eventTime) }}</p>
+              <p class="text-gray-700 mb-4">{{ event.description }}</p>
+              <router-link 
+                :to="{ name: 'BookEvent', query: { eventId: event._id, eventName: event.title }}" 
+                class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300"
+              >
+                Reserve a Spot
+              </router-link>
+            </div>
+          </div>
+        </template>
       </div>
     </section>
 
@@ -177,6 +206,7 @@
 import { ref, onMounted } from 'vue';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import axios from 'axios';
 
 // Image imports
 import slide1 from "../assets/banner1.jpg";
@@ -235,6 +265,9 @@ const currentSlides = ref(0);
 const sliderContainer = ref(null);
 const menuSlideInterval = ref(null);
 const activeFaq = ref(null);
+const events = ref([]);
+const loading = ref(true);
+const error = ref(null);
 
 // Methods
 const nextSlide = () => {
@@ -267,31 +300,40 @@ const toggleFaq = (id) => {
   activeFaq.value = activeFaq.value === id ? null : id;
 };
 
-// Data
-const events = [
-  {
-    id: 1,
-    title: 'Live Music Night',
-    date: 'Every Friday, 7 PM',
-    image: slide1,
-    link: '/book-event'
-  },
-  {
-    id: 2,
-    title: 'Seafood Festival',
-    date: 'First Saturday of every month',
-    image: slide3,
-    link: '/book-event'
-  },
-  {
-    id: 3,
-    title: 'Sunset Yoga',
-    date: 'Every Sunday, 5 PM',
-    image: slide2,
-    link: '/book-event'
-  }
-];
+// Format date function
+const formatDate = (dateString) => {
+  return new Date(dateString).toLocaleDateString('en-US', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
 
+// Format time function
+const formatTime = (timeString) => {
+  return new Date(`2000-01-01T${timeString}`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+};
+
+// Fetch events from backend
+const fetchEvents = async () => {
+  try {
+    loading.value = true;
+    const response = await axios.get('https://turtles-steel.vercel.app/api/events');
+    events.value = response.data;
+  } catch (err) {
+    console.error('Error fetching events:', err);
+    error.value = 'Failed to load events. Please try again later.';
+  } finally {
+    loading.value = false;
+  }
+};
+
+// Data
 const menuHighlights = [
   { id: 1, name: 'Cream Of Tomato Basil Soup', image: food1, description: 'Cream Of Tomato Basil Soup' },
   { id: 2, name: 'Drums Of Heaven (Chicken Lollipop)', image: food2, description: 'Drums Of Heaven (Chicken Lollipop)' },
@@ -345,6 +387,8 @@ onMounted(() => {
     sliderContainer.value.addEventListener('mouseenter', stopSlideShow);
     sliderContainer.value.addEventListener('mouseleave', startSlideShow);
   }
+
+  fetchEvents();
 });
 </script>
 
@@ -1389,6 +1433,26 @@ html {
 /* Enhanced hover effects */
 .transform {
   transition: transform 0.3s ease-in-out;
+}
+
+/* Add any additional styles here */
+.grid {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Center single event card */
+@media (min-width: 640px) {
+  .col-start-1.sm\:col-start-1 {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:col-start-2 {
+    grid-column: 2 / 3;
+  }
 }
   </style>
   
