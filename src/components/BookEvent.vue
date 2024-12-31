@@ -104,28 +104,42 @@
       async submitBookingForm() {
         this.isSubmitting = true;
         try {
-          const response = await fetch('YOUR_API_ENDPOINT/book-event', {
+          // Format the data according to your API requirements
+          const requestData = {
+            eventName: this.eventForm.eventName,
+            fullName: this.eventForm.fullName,
+            email: this.eventForm.email,
+            phone: this.eventForm.phone,
+            numberOfGuests: parseInt(this.eventForm.guests),
+            message: this.eventForm.message
+          };
+
+          console.log('Sending data:', requestData); // Debug log
+
+          const response = await fetch('https://turtles-steel.vercel.app/api/events', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify(this.eventForm)
+            body: JSON.stringify(requestData)
           });
 
+          console.log('Response status:', response.status); // Debug log
+
           if (!response.ok) {
-            throw new Error('Booking failed');
+            const errorData = await response.json();
+            console.error('Server error:', errorData); // Debug log
+            throw new Error(errorData.message || 'Booking failed');
           }
 
-          await response.json();
+          const responseData = await response.json();
+          console.log('Success response:', responseData); // Debug log
           
-          // Show success message
           alert(`Thank you, ${this.eventForm.fullName}! Your booking has been confirmed.`);
-
-          // Clear form after successful submission
           this.resetForm();
         } catch (error) {
-          console.error('Error booking event:', error);
-          alert('Sorry, there was an error booking your event. Please try again.');
+          console.error('Submission error:', error);
+          alert(`Error: ${error.message || 'Failed to submit booking. Please try again.'}`);
         } finally {
           this.isSubmitting = false;
         }
