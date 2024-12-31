@@ -69,19 +69,18 @@
                 rows="4"
               ></textarea>
             </div>
-            <button type="submit" class="submit-button">Book Event</button>
+            <button 
+              type="submit" 
+              class="submit-button" 
+              :disabled="isSubmitting"
+            >
+              {{ isSubmitting ? 'Booking...' : 'Book Event' }}
+            </button>
           </form>
         </div>
   
         <!-- Event Information -->
-        <div class="event-info">
-          <h2>Upcoming Events</h2>
-          <ul>
-            <li>Event 1: Annual Conference - Date: 2024-01-15</li>
-            <li>Event 2: Workshop on Innovation - Date: 2024-02-20</li>
-            <li>Event 3: Networking Gala - Date: 2024-03-05</li>
-          </ul>
-        </div>
+       
       </div>
     </div>
   </template>
@@ -98,29 +97,51 @@
           guests: 1,
           message: "",
         },
+        isSubmitting: false,
       };
     },
     methods: {
-      submitBookingForm() {
-        const { eventName, fullName, email, phone, guests, message } = this.eventForm;
-        const confirmationMessage = `
-          Thank you, ${fullName}! 
-          You've successfully booked for "${eventName}". 
-          We will send further details to ${email}.
-          Contact: ${phone}
-          Number of Guests: ${guests}
-          Special Message: ${message ? message : "No special message."}
-        `;
-        alert(confirmationMessage);
-  
-        // Clear form after submission
-        this.eventForm.eventName = "";
-        this.eventForm.fullName = "";
-        this.eventForm.email = "";
-        this.eventForm.phone = "";
-        this.eventForm.guests = 1;
-        this.eventForm.message = "";
+      async submitBookingForm() {
+        this.isSubmitting = true;
+        try {
+          // Send data to backend
+          const response = await fetch('YOUR_API_ENDPOINT/book-event', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.eventForm)
+          });
+
+          if (!response.ok) {
+            throw new Error('Booking failed');
+          }
+
+          const data = await response.json();
+          
+          // Show success message
+          alert(`Thank you, ${this.eventForm.fullName}! Your booking has been confirmed.`);
+
+          // Clear form after successful submission
+          this.resetForm();
+        } catch (error) {
+          console.error('Error booking event:', error);
+          alert('Sorry, there was an error booking your event. Please try again.');
+        } finally {
+          this.isSubmitting = false;
+        }
       },
+
+      resetForm() {
+        this.eventForm = {
+          eventName: "",
+          fullName: "",
+          email: "",
+          phone: "",
+          guests: 1,
+          message: "",
+        };
+      }
     },
   };
   </script>
