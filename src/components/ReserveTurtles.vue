@@ -88,7 +88,17 @@ const handleSubmit = async () => {
   error.value = null;
   
   try {
-    const response = await axios.post('YOUR_API_ENDPOINT/reservations', formData.value);
+    const requestData = {
+      username: formData.value.name,
+      phone: parseInt(formData.value.phone),
+      reserveDate: formData.value.date,
+      reserveTime: formData.value.time,
+      numberOfGuests: parseInt(formData.value.guests),
+      specialRequest: formData.value.special
+    };
+
+    const response = await axios.post('https://turtles-steel.vercel.app/api/reserve', requestData);
+    
     if (response.status === 200) {
       alert('Reservation submitted successfully!');
       // Reset form after successful submission
