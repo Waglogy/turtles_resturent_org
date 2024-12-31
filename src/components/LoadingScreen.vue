@@ -1,190 +1,158 @@
 <template>
-    <div class="loading-screen">
-      <div class="turtle-container">
-        <div class="turtle">
-          <div class="turtle-head"></div>
-          <div class="turtle-shell"></div>
-          <div class="flipper left"></div>
-          <div class="flipper right"></div>
-        </div>
-      </div>
-      <h1 class="loading-text font-pacifico">Breathe in the Ocean. Savor the Flavors.</h1>
-      <div class="wave-container">
-        <div class="wave wave1"></div>
-        <div class="wave wave2"></div>
-        <div class="wave wave3"></div>
-      </div>
+  <div class="loading-container">
+    <div class="turtle-container">
+      <!-- Green Turtle SVG -->
+      <svg class="turtle" viewBox="0 0 512 512" width="100" height="100">
+        <!-- Shell -->
+        <path class="shell" d="M373.288,426.299c-21.305,23.343-48.495,40.179-78.82,48.518c-30.325,8.339-62.572,8.339-92.897,0
+          c-30.325-8.339-57.515-25.175-78.82-48.518c-21.305-23.343-35.995-52.179-42.456-83.518c-6.461-31.339-2.771-63.675,9.69-93.193
+          c12.461-29.518,34.151-55.354,62.956-74.693c23.713-20.253,51.572-35.285,81.285-44.274c17.828-5.519,36.339-8.526,55.039-9.145
+          c17.7-0.593,35.326,0.895,52.251,4.419c29.713,8.989,57.572,24.021,81.285,44.274c28.805,19.339,50.495,45.175,62.956,74.693
+          c12.461,29.518,16.151,61.854,9.69,93.193C409.283,374.12,394.593,402.956,373.288,426.299z"/>
+        
+        <!-- Shell Pattern -->
+        <path class="shell-pattern" d="M256,140 
+          a116,116 0 0,1 0,232 
+          a116,116 0 0,1 0,-232
+          M256,180
+          a76,76 0 0,0 0,152
+          a76,76 0 0,0 0,-152"/>
+        
+        <!-- Head -->
+        <path class="head" d="M200,256 
+          c-20,-20 -20,-60 0,-80
+          c20,-20 60,-20 80,0
+          c20,20 20,60 0,80
+          c-20,20 -60,20 -80,0"/>
+        
+        <!-- Flippers -->
+        <path class="flippers" d="M150,200 
+          c-30,-30 -30,-80 0,-110
+          c30,-30 80,-30 110,0
+          M150,312
+          c-30,30 -30,80 0,110
+          c30,30 80,30 110,0
+          M362,200
+          c30,-30 30,-80 0,-110
+          c-30,-30 -80,-30 -110,0
+          M362,312
+          c30,30 30,80 0,110
+          c-30,30 -80,30 -110,0"/>
+      </svg>
     </div>
-  </template>
-  
-  <script setup>
-  // No additional script needed for the loading component
-  </script>
-  
-  <style scoped>
-  .loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #faf1e8;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    overflow: hidden;
-  }
-  
-  /* Updated wave container with increased height */
-  .wave-container {
-    background: #00BCD4;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 500px; /* Increased height */
-    overflow: hidden;
-    transform: rotate(180deg); /* Flip the container upside down */
-  }
-  
-  .wave {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23faf1e8' fill-opacity='1' d='M0,160L48,176C96,192,192,224,288,224C384,224,480,192,576,176C672,160,768,160,864,176C960,192,1056,224,1152,224C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
-    animation: waveUp 20s linear infinite;
-    transform-origin: center bottom;
-  }
-  
-  .wave1 {
-    animation: waveUp 20s linear infinite;
-    opacity: 1;
-    z-index: 1000;
-  }
-  
-  .wave2 {
-    animation: waveUp 15s linear infinite;
-    opacity: 0.5;
-    z-index: 999;
-  }
-  
-  .wave3 {
-    animation: waveUp 10s linear infinite;
-    opacity: 0.2;
-    z-index: 998;
-  }
-  
-  /* Updated wave animation to move upwards */
-  @keyframes waveUp {
-    0% {
-      transform: translateX(0) translateY(0) scaleY(1);
-    }
-    50% {
-      transform: translateX(-25%) translateY(-10px) scaleY(0.5);
-    }
-    100% {
-      transform: translateX(-50%) translateY(0) scaleY(1);
-    }
-  }
-  
-  .turtle-container {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    animation: float 3s ease-in-out infinite;
-    z-index: 1001; /* Ensure turtle stays above waves */
-  }
-  
-  .turtle {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .turtle-shell {
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    width: 80%;
-    height: 60%;
-    background: #3A6507;
-    border-radius: 50%;
-    transform: rotate(-10deg);
-  }
-  
-  .turtle-head {
-    position: absolute;
-    top: 30%;
-    left: 70%;
-    width: 30%;
-    height: 25%;
-    background: #3A6507;
-    border-radius: 50%;
-    transform: rotate(20deg);
-  }
-  
-  .flipper {
-    position: absolute;
-    width: 30%;
-    height: 15%;
-    background: #3A6507;
-    border-radius: 50%;
-  }
-  
-  .flipper.left {
-    top: 40%;
-    left: 0;
-    transform: rotate(-45deg);
-    animation: swim-left 1s ease-in-out infinite;
-  }
-  
-  .flipper.right {
-    top: 40%;
-    right: 0;
-    transform: rotate(45deg);
-    animation: swim-right 1s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-  
-  @keyframes swim-left {
-    0%, 100% {
-      transform: rotate(-45deg);
-    }
-    50% {
-      transform: rotate(-15deg);
-    }
-  }
-  
-  @keyframes swim-right {
-    0%, 100% {
-      transform: rotate(45deg);
-    }
-    50% {
-      transform: rotate(15deg);
-    }
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .wave-container {
-      height: 200px; /* Adjusted height for mobile */
-    }
     
-    .turtle-container {
-      width: 80px;
-      height: 80px;
-    }
+    <!-- Wave Animation with increased height -->
+    <div class="wave-container">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f0f8ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.turtle-container {
+  position: absolute;
+  z-index: 2;
+  animation: float 3s ease-in-out infinite;
+}
+
+.turtle {
+  transform-origin: center;
+  animation: swim 2s ease-in-out infinite;
+}
+
+/* Turtle Colors */
+.shell {
+  fill: #2E7D32; /* Dark green for main shell */
+}
+
+.shell-pattern {
+  fill: #4CAF50; /* Lighter green for shell pattern */
+}
+
+.head {
+  fill: #81C784; /* Light green for head */
+}
+
+.flippers {
+  fill: #81C784; /* Light green for flippers */
+}
+
+.wave-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px; /* Increased from 100px to 200px */
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 200px; /* Increased from 100px to 200px */
+  background: rgba(0, 188, 212, 0.3);
+  border-radius: 50% 50% 0 0;
+  animation: wave 3s linear infinite;
+}
+
+.wave:nth-child(2) {
+  bottom: 20px; /* Increased from 10px to 20px */
+  animation: wave 3s linear infinite;
+  animation-delay: 0.5s;
+  opacity: 0.5;
+}
+
+.wave:nth-child(3) {
+  bottom: 40px; /* Increased from 20px to 40px */
+  animation: wave 3s linear infinite;
+  animation-delay: 1s;
+  opacity: 0.3;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
-  </style>
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes swim {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-25%) scaleY(0.9);
+  }
+  100% {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+</style>

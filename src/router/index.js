@@ -5,10 +5,16 @@ import Reserveturtles from '@/components/ReserveTurtles.vue';
 import BookEvent  from '@/components/BookEvent.vue';
 import FooterTurtles from '@/components/FooterTurtles.vue';
 import AboutTurtles from '@/components/AboutTurtles.vue';
+import LoadingScreen from '@/components/LoadingScreen.vue';
 
 
 
 const routes = [
+  {
+    path: '/loading',
+    name: 'LoadingScreen',
+    component: LoadingScreen,
+  },
   {
     path: '/',
     name: 'HomeTurtles',
