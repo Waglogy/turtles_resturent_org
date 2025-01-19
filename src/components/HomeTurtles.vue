@@ -63,9 +63,7 @@
         </template>
         
         <!-- Center single event -->
-        <div v-if="events.length === 1" class="col-start-1 sm:col-start-1 lg:col-start-2">
-          <EventCard :event="events[0]" />
-        </div>
+       
 
         <!-- Multiple events -->
         <template v-else>
