@@ -1,19 +1,16 @@
 <template>
   <footer class="footer text-white py-12 px-6 sm:px-12 lg:px-24">
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div>
-        <h3 class="text-2xl font-pacifico mb-4">Turtles</h3>
-        <p>Experience the best of Goan cuisine and vibes at Morjim Beach.</p>
-      </div>
+     
       <div>
         <h4 class="text-xl font-bold mb-4">Contact Us</h4>
-        <p>Email: turtlesmorjim@gmail.com</p>
-        <p>Phone: +91 123 456 7890</p>
+        <p>Email: turtles.goa@gmail.com</p>
+        <p>Phone: 9270011045/9969352048</p>
       </div>
       <div>
         <h4 class="text-xl font-bold mb-4">Location</h4>
         <p>Morjim Beach, Goa, India</p>
-        <p>Open daily: 10 AM to 11 PM</p>
+        <p>Timings : 10 AM to 11 PM</p>
       </div>
       <div>
         <h4 class="text-xl font-bold mb-4">Follow Us</h4>
@@ -38,7 +35,7 @@
 
     <!-- Copyright Section at the Bottom -->
     <div class="mt-8 text-center footer-copyright">
-      <p>&copy; 2023 Turtles Restaurant & Bar. All rights reserved.</p>
+      <p>&copy; 2024 Turtles Restaurant & Bar. All rights reserved.</p>
       <p>Made with love by <a href="https://www.waglogy.in" target="_blank" class="text-cyan-300 hover:text-cyan-400 transition">Waglogy</a></p>
     </div>
   </footer>

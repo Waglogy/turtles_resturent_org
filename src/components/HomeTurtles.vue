@@ -18,7 +18,7 @@
       
       <!-- Content -->
       <div class="absolute inset-0 flex flex-col justify-center items-start px-6 sm:px-12 lg:px-24" data-aos="fade-right">
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-pacifico text-white mb-4" v-html="heroSlides[currentSlide].title"></h1>
+        <h1 style="color: white;" class="text-4xl sm:text-5xl lg:text-6xl font-pacifico text-white mb-4" v-html="heroSlides[currentSlide].title"></h1>
         <p style="color: white;" class="text-xl font-bold sm:text-2xl text-white mb-8 max-w-2xl" v-html="heroSlides[currentSlide].description"></p>
         <a :href="heroSlides[currentSlide].ctaLink" target="_blank" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
           {{ heroSlides[currentSlide].ctaText }}
@@ -117,7 +117,7 @@
                     <p class="text-white bg-white font-bold text-center px-4">{{ item.description }}</p>
                   </div>
                 </div>
-                <h3 class="mt-2 text-lg text-black font-semibold">{{ item.name }}</h3>
+                <h2 class="mt-2 text-lg font-pacifico text-olive-green">{{ item.name }}</h2>
               </div>
             </div>
           </div>
@@ -148,7 +148,7 @@
       <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col sm:flex-row items-center sm:items-start sm:justify-between">
         <div class="text-center sm:text-left sm:mr-8 mb-8 sm:mb-0" data-aos="fade-right">
           <h1 class="text-4xl font-pacifico text-olive-green mb-4">Oh, and don't miss out on the Tipsy Turtle!</h1>
-          <p class="text-xl mb-8">One per person, please!</p>
+          <br>
           <router-link 
             :to="{ name: 'MenuViewer' }"
             class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
@@ -188,28 +188,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 px-6 sm:px-12 lg:px-24" data-aos="fade-up">
-      <h1 class="text-4xl font-pacifico text-olive-green mb-8 text-center">Frequently Asked Questions</h1>
-      <div class="max-w-3xl mx-auto">
-        <div v-for="faq in faqs" 
-             :key="faq.id" 
-             class="mb-6 border-b pb-4"
-             data-aos="fade-up"
-             :data-aos-delay="faq.id * 50">
-          <div 
-            @click="toggleFaq(faq.id)" 
-            class="cursor-pointer flex justify-between items-center">
-            <h3 class="text-xl font-bold mb-2">{{ faq.question }}</h3>
-            <span class="text-2xl">{{ activeFaq === faq.id ? '−' : '+' }}</span>
-          </div>
-          <p 
-            v-show="activeFaq === faq.id" 
-            class="text-gray-700 transition-all duration-300">
-            {{ faq.answer }}
-          </p>
-        </div>
-      </div>
-    </section>
+   
   </div>
 </template>
     
@@ -221,17 +200,16 @@ import 'aos/dist/aos.css';
 import axios from 'axios';
 
 // Image imports
-import slide1 from "../assets/banner1.jpg";
-import slide2 from "../assets/gallery/2.jpg";
-import slide3 from "../assets/banner3.jpg";
+import slide1 from "../assets/4.png";
+import slide2 from "../assets/5.png";
+import slide3 from "../assets/6.png";
 import food1 from "../assets/food/Cream Of Tomato Basil Soup.jpeg";
 import food2 from "../assets/food/Drums Of Heaven (Chicken Lollipop)4.jpeg";
 import food3 from "../assets/food/Eggs-Benedict-9.jpg";
 import food4 from "../assets/food/Margarita Pizza.jpeg";
 import food5 from "../assets/food/Papaya Lassi.jpeg";
 import food6 from "../assets/food/Tomato_Cheese_Sandwich_Recipe-1.jpg";
-import food7 from "../assets/food/Veg. Momo.jpeg";
-import food8 from "../assets/food/Veg. Quesadilla.jpeg";
+
 import trispy from "../assets/11.png";
 import gall1 from "../assets/gallery/6.jpg";
 import gall2 from "../assets/gallery/2.jpg";
@@ -249,7 +227,7 @@ const heroSlides = [
     title: 'Sea, Eat, Repeat.',
     description: 'Your table near the shore is just a click away!',
     image: slide1,
-    ctaText: 'Reserve it now',
+    ctaText: 'Book a Table',
     ctaLink: '/reserve'
   },
   {
@@ -276,7 +254,7 @@ const slideInterval = ref(null);
 const currentSlides = ref(0);
 const sliderContainer = ref(null);
 const menuSlideInterval = ref(null);
-const activeFaq = ref(null);
+
 const events = ref([]);
 const loading = ref(true);
 const error = ref(null);
@@ -308,9 +286,7 @@ const stopSlideShow = () => {
   }
 };
 
-const toggleFaq = (id) => {
-  activeFaq.value = activeFaq.value === id ? null : id;
-};
+
 
 // Format date function
 const formatDate = (dateString) => {
@@ -347,33 +323,19 @@ const fetchEvents = async () => {
 
 // Data
 const menuHighlights = [
-  { id: 1, name: 'Cream Of Tomato Basil Soup', image: food1, description: 'Cream Of Tomato Basil Soup' },
-  { id: 2, name: 'Drums Of Heaven (Chicken Lollipop)', image: food2, description: 'Drums Of Heaven (Chicken Lollipop)' },
-  { id: 3, name: 'Egg Benedict', image: food3, description: 'Egg Benedict' },
-  { id: 4, name: 'Margarita Pizza', image: food4, description: 'Margarita Pizza' },
-  { id: 5, name: 'Papaya Lassi', image: food5, description: 'Papaya Lassi' },
-  { id: 6, name: 'Cheese Tomato Sandwich', image: food6, description: 'Cheese Tomato Sandwich' },
-  { id: 7, name: 'Veg. Momo', image: food7, description: 'Veg. Momo' },
-  { id: 8, name: 'Veg. Quesadilla', image: food8, description: 'Veg. Quesadilla' }
+  { id: 1, name: 'THAI', image: food1, description: 'Experience the exotic flavors of Thailand with our authentic Thai dishes, crafted with fresh ingredients and aromatic spices.' },
+  { id: 2, name: 'TIBETAN', image: food2, description: 'Delight in the unique and hearty flavors of Tibetan cuisine, featuring traditional recipes and rich, savory dishes.' },
+  { id: 3, name: 'CONTINENTAL', image: food3, description: 'Savor the diverse and refined tastes of Continental cuisine, offering a variety of classic European dishes.' },
+  { id: 4, name: 'INDIAN', image: food4, description: 'Indulge in the vibrant and diverse flavors of Indian cuisine, with a range of spicy, tangy, and aromatic dishes.' },
+  { id: 5, name: 'CHINESE', image: food5, description: 'Enjoy the bold and flavorful tastes of Chinese cuisine, featuring a mix of sweet, sour, and savory dishes.' },
+  { id: 6, name: 'ITALIAN', image: food6, description: 'Relish the rich and comforting flavors of Italian cuisine, with a selection of pasta, pizza, and other classic dishes.' },
 ];
 
 const customerPhotos = [
   gall1, gall2, gall3, gall4, gall5, gall6, gall7, gall8
 ];
 
-const faqs = [
-  { id: 1, question: 'What are the opening hours of Turtles Restaurant & Bar in Morjim, Goa?', answer: 'Turtles is open daily from 10 AM to 11 PM.' },
-  { id: 2, question: 'Does Turtles, Morjim offer vegetarian and vegan food options?', answer: 'Yes, we offer a variety of vegetarian and vegan dishes.' },
-  { id: 3, question: 'Is it necessary to make a reservation for dining?', answer: 'Reservations are not mandatory, but recommended to book during peak hours. To book the machan, reservation is required.' },
-  { id: 4, question: 'What types of cocktails and beverages do you serve?', answer: 'We serve a range of signature cocktails, mocktails, local spirits, and international beverages.' },
-  { id: 5, question: 'Is it a family-friendly restaurant near Turtle Beach?', answer: 'Yes, Turtles is family-friendly with a cozy ambiance for all age groups.' },
-  { id: 6, question: 'Does Turtles host live music events or sundowner gigs in Morjim?', answer: 'Yes, we host live music and sundowner events frequently. Check our Instagram @turltes.goa for more.' },
-  { id: 7, question: 'Is there parking space available nearby?', answer: 'Yes, parking space is available near the restaurant.' },
-  { id: 8, question: 'Is it a pet-friendly restaurant?', answer: 'We welcome pets with open arms.' },
-  { id: 9, question: 'Do you offer gluten-free or customized meal options?', answer: 'Yes, we provide gluten-free and customizable meals upon request.' },
-  { id: 10, question: 'What makes Turtles a must-visit spot in Morjim Beach?', answer: 'Just a shells throw away from the turtle beach (where Chapora river meets the sea). With a variety of cuisines, signature cocktails, delicious food, good music, and laid-back chill vibes, its the perfect spot to relax, dine and soak in the Goa spirit.' },
-  { id: 11, question: 'How can I reach Turtles Restaurant & Bar from Morjim Beach?', answer: 'Were a short walk from Morjim Beach. Use Google Maps to navigate.' }
-];
+
 
 onMounted(() => {
   // Initialize AOS with proper configuration

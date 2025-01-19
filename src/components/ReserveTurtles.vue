@@ -1,6 +1,10 @@
 <template>
   <div class="reserve-page">
-    <div class="booking-form" data-aos="zoom-in">
+    <div v-if="successMessage" class="success-message">
+      {{ successMessage }}
+      <button @click="redirectToHome" class="ok-button">OK</button>
+    </div>
+    <div v-else class="booking-form" data-aos="zoom-in">
       <h1 data-aos="fade-down">Reserve Your Spot at Turtles</h1>
       <form @submit.prevent="handleSubmit">
         <div class="form-group" data-aos="fade-up" data-aos-delay="100">
@@ -24,23 +28,27 @@
           />
         </div>
         <div class="form-group" data-aos="fade-up" data-aos-delay="300">
+          <label for="altPhone">Alternate Phone Number</label>
+          <input
+            type="tel"
+            id="altPhone"
+            v-model="formData.altPhone"
+            placeholder="Enter your alternate phone number"
+          />
+        </div>
+        <div class="form-group" data-aos="fade-up" data-aos-delay="400">
           <label for="date">Date</label>
           <input type="date" id="date" v-model="formData.date" required />
         </div>
-        <div class="form-group" data-aos="fade-up" data-aos-delay="400">
-          <label for="time">Time</label>
-          <input type="time" id="time" v-model="formData.time" required />
-        </div>
         <div class="form-group" data-aos="fade-up" data-aos-delay="500">
-          <label for="guests">Number of Guests</label>
-          <input
-            type="number"
-            id="guests"
-            v-model="formData.guests"
-            placeholder="Enter the number of guests"
-            min="1"
-            required
-          />
+          <label for="table">Table</label>
+          <select id="table" v-model="formData.table" required>
+            <option value="2 Seater">2 Seater</option>
+            <option value="4 Seater">4 Seater</option>
+            <option value="6 Seater">6 Seater</option>
+            <option value="8 Seater">8 Seater</option>
+            <option value="Machan">Machan</option>
+          </select>
         </div>
         <div class="form-group" data-aos="fade-up" data-aos-delay="600">
           <label for="special">Special Requests</label>
@@ -67,56 +75,72 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import axios from 'axios';
+import { useRouter } from 'vue-router';
+import emailjs from 'emailjs-com';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const formData = ref({
   name: "",
   phone: "",
+  altPhone: "",
   date: "",
-  time: "",
-  guests: 1,
+  table: "",
   special: "",
 });
 
 const loading = ref(false);
 const error = ref(null);
+const successMessage = ref("");
+const router = useRouter();
 
 const handleSubmit = async () => {
   loading.value = true;
   error.value = null;
+  successMessage.value = "";
   
   try {
     const requestData = {
       username: formData.value.name,
-      phone: parseInt(formData.value.phone),
+      phone: formData.value.phone,
+      altPhone: formData.value.altPhone,
       reserveDate: formData.value.date,
-      reserveTime: formData.value.time,
-      numberOfGuests: parseInt(formData.value.guests),
+      table: formData.value.table,
       specialRequest: formData.value.special
     };
 
-    const response = await axios.post('https://turtles-steel.vercel.app/api/reserve', requestData);
+    // Send email using EmailJS
+    await emailjs.send('service_pkjkm3j', 'template_ll3xxvd', {
+      to_name: 'Turtles Restaurant',
+      from_name: requestData.username,
+      phone: requestData.phone,
+      alt_phone: requestData.altPhone,
+      reserve_date: requestData.reserveDate,
+      table: requestData.table,
+      special_request: requestData.specialRequest
+    }, 'PuaNT9Bhz-JOJnF9A');
+
+    successMessage.value = 'Thank you for your reservation request! We\'ve received your booking and will give you a confirmation call shortly. Stay tuned!';
     
-    if (response.status === 200) {
-      alert('Reservation submitted successfully!');
-      // Reset form after successful submission
-      formData.value = {
-        name: "",
-        phone: "",
-        date: "",
-        time: "",
-        guests: 1,
-        special: "",
-      };
-    }
+    // Reset form after successful submission
+    formData.value = {
+      name: "",
+      phone: "",
+      altPhone: "",
+      date: "",
+      table: "",
+      special: "",
+    };
   } catch (err) {
     error.value = 'Failed to submit reservation. Please try again.';
     console.error('Error:', err);
   } finally {
     loading.value = false;
   }
+};
+
+const redirectToHome = () => {
+  router.push('/');
 };
 
 onMounted(() => {
@@ -133,6 +157,7 @@ onMounted(() => {
 <style scoped>
 .reserve-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: auto;
@@ -165,7 +190,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
@@ -191,6 +217,35 @@ textarea {
 
 .submit-button:hover {
   background: #ff6347;
+}
+
+.success-message {
+  background: #ffffff;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  border:2px #00BCD4;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  max-width: 450px;
+  width: 100%;
+}
+
+.ok-button {
+  background: #fff;
+  color: #4CAF50;
+  border: 2px solid #4CAF50;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.ok-button:hover {
+  background: #4CAF50;
+  color: #000000;
 }
 
 h2 {
@@ -231,7 +286,8 @@ h2 {
   }
 
   input,
-  textarea {
+  textarea,
+  select {
     font-size: 0.9rem; /* Adjust font size for smaller screens */
     padding: 8px; /* Slightly reduce padding */
     border-radius: 10px; /* Simplify the radius for consistency */
@@ -241,6 +297,17 @@ h2 {
     font-size: 1.2rem; /* Smaller button text size */
     padding: 15px; /* Reduce padding for better spacing */
     border-radius: 10px; /* Match smaller screen elements */
+  }
+
+  .success-message {
+    font-size: 1rem; /* Adjust success message size */
+    padding: 15px; /* Adjust padding */
+    border-radius: 10px; /* Adjust border radius */
+  }
+
+  .ok-button {
+    font-size: 0.9rem; /* Adjust button size */
+    padding: 8px 16px; /* Adjust padding */
   }
 }
 
@@ -259,7 +326,8 @@ h2 {
   }
 
   input,
-  textarea {
+  textarea,
+  select {
     font-size: 0.8rem;
     padding: 5px;
   }
@@ -268,11 +336,23 @@ h2 {
     font-size: 1rem;
     padding: 10px;
   }
+
+  .success-message {
+    font-size: 0.9rem; /* Adjust success message size */
+    padding: 10px; /* Adjust padding */
+    border-radius: 10px; /* Adjust border radius */
+  }
+
+  .ok-button {
+    font-size: 0.8rem; /* Adjust button size */
+    padding: 6px 12px; /* Adjust padding */
+  }
 }
 
 @media (max-width: 768px) {
   input,
-  textarea {
+  textarea,
+  select {
     font-size: 1rem; /* Increase font size for better readability */
     padding: 12px; /* Add more padding */
     border-radius: 15px; /* Slightly larger radius for a rounded effect */
@@ -283,11 +363,23 @@ h2 {
     padding: 18px; /* Increase padding for the button */
     border-radius: 15px;
   }
+
+  .success-message {
+    font-size: 1.1rem; /* Adjust success message size */
+    padding: 18px; /* Adjust padding */
+    border-radius: 15px; /* Adjust border radius */
+  }
+
+  .ok-button {
+    font-size: 1rem; /* Adjust button size */
+    padding: 10px 20px; /* Adjust padding */
+  }
 }
 
 @media (max-width: 480px) {
   input,
-  textarea {
+  textarea,
+  select {
     font-size: 1.1rem; /* Even larger font for smaller devices */
     padding: 10px 4px ; /* Further increase padding */
     border-radius: 20px; /* Make fields more rounded */
@@ -297,6 +389,17 @@ h2 {
     font-size: 1.2rem; /* Adjust button size */
     padding: 16px; /* Adjust padding for the button */
     border-radius: 20px;
+  }
+
+  .success-message {
+    font-size: 1rem; /* Adjust success message size */
+    padding: 16px; /* Adjust padding */
+    border-radius: 20px; /* Adjust border radius */
+  }
+
+  .ok-button {
+    font-size: 0.9rem; /* Adjust button size */
+    padding: 8px 16px; /* Adjust padding */
   }
 }
 
@@ -311,4 +414,4 @@ h2 {
   cursor: not-allowed;
 }
 </style>
-  
+

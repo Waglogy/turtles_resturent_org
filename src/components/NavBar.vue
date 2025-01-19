@@ -19,6 +19,8 @@
         </li>
         <li><a href="/reserve"><i class="fas fa-calendar-check"></i> Reserve</a></li>
         <li><a href="/contact"><i class="fas fa-phone-alt"></i> Contact</a></li>
+        <li><a href="/faqs"><i class="fas fa-question-circle"></i> FAQs</a></li>
+
       </ul>
     </div>
   </nav>
@@ -52,7 +54,7 @@ nav {
 
 /* Logo styling */
 .navlogo img {
-  width: 100px;
+  width: 160px;
   padding: 10px;
   border-radius: 8px;
 }
@@ -121,7 +123,7 @@ nav {
   }
 
   .navlogo img {
-    height: 50px; /* Adjusted for smaller screens */
+    height: 90px; /* Adjusted for smaller screens */
   }
 
   .navlist {

@@ -4,7 +4,7 @@
       <h1 class="contact-title">Contact Us</h1>
       <p class="contact-subtitle" data-aos="fade-up" data-aos-delay="100">We're Just a Message Away!</p>
       <p class="contact-description" data-aos="fade-up" data-aos-delay="200">
-        Have a question, craving, or plan to chill at Turtles? Reach out—we'd love to hear from you!
+      Have a question, craving, or plan to chill at Turtles? Reach out—we'd love to hear from you!
       </p>
     </div>
 
@@ -13,10 +13,10 @@
       <div class="contact-info" data-aos="fade-right">
         <h2 data-aos="fade-up">How to Reach Us</h2>
         <p data-aos="fade-up" data-aos-delay="100">
-          <span role="img" aria-label="phone">📞</span> Call Us: +91 092700 11045
+          <span role="img" aria-label="phone">📞</span> Call Us: 9270011045/9969352048
         </p>
         <p data-aos="fade-up" data-aos-delay="200">
-          <span role="img" aria-label="email">📧</span> Email Us: turtlesmorjim@gmail.com
+          <span role="img" aria-label="email">📧</span> Email Us: turtles.goa@gmail.com
         </p>
         <br>
         <h3 data-aos="fade-up" data-aos-delay="300">Planning a party or a special event?</h3>

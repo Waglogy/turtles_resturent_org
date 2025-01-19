@@ -7,6 +7,7 @@ import FooterTurtles from '@/components/FooterTurtles.vue';
 import AboutTurtles from '@/components/AboutTurtles.vue';
 import LoadingScreen from '@/components/LoadingScreen.vue';
 import MenuViewer from '../components/MenuViewer.vue';
+import FaQs from '../components/FandQues.vue'
 
 
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/loading',
     name: 'LoadingScreen',
     component: LoadingScreen,
+  },
+  {
+   path: '/faqs',
+   name: 'FandQues',
+   component: FaQs,
   },
   {
     path: '/',

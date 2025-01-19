@@ -2,14 +2,14 @@
   <div class="min-h-screen bg-beige-100">
     <!-- Hero Section -->
     <section class="relative h-64 sm:h-80 md:h-96 bg-cover bg-center" 
-             style="background-image: url('/about-hero.jpg');"
+             style="background-image: url('/banner1.jpg');"
              data-aos="fade-down">
       <div class="absolute inset-0 bg-black bg-opacity-50"></div>
       <div class="absolute inset-0 flex items-center justify-center">
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-pacifico text-white text-center"
             data-aos="fade-up"
             data-aos-delay="200">
-          About Turtles
+          
         </h1>
       </div>
     </section>
@@ -51,6 +51,7 @@
                class="space-y-4"
                data-aos="fade-up"
                :data-aos-delay="index * 200">
+            <img :src="visionary.image" alt="Photo of {{ visionary.name }}" class="w-32 h-32 mx-auto rounded-full object-cover">
             <h3 class="text-2xl text-black font-bold text-center">{{ visionary.name }}</h3>
             <p class="text-center text-justify text-black">{{ visionary.description }}</p>
           </div>
@@ -84,11 +85,13 @@ import 'aos/dist/aos.css';
 const visionaries = ref([
   {
     name: 'Paul M.',
-    description: 'Having a vast experience in the marine industry, M. Paul delivers unparalleled service excellence and careful focus on detail to Turtles. His commitment to ensuring a smooth and pleasant experience for each guest comes from his extensive background of professional success. Paul s transition to the hospitality industry demonstrates his dedication to accuracy, dependability, and innovation, turning Turtles into a sanctuary for visitors looking for a mix of good food and relaxation near the beach in North Goa.'
+    description: 'Having a vast experience in the marine industry, M. Paul delivers unparalleled service excellence and careful focus on detail to Turtles. His commitment to ensuring a smooth and pleasant experience for each guest comes from his extensive background of professional success. Paul s transition to the hospitality industry demonstrates his dedication to accuracy, dependability, and innovation, turning Turtles into a sanctuary for visitors looking for a mix of good food and relaxation near the beach in North Goa.',
+    image: '/paul_m.jpg'
   },
   {
     name: 'Paul R.',
-    description: 'Former Marine Commando R. Paul, from Indias Naval Special Forces brings his adventurous spirit and passion for culinary arts to Turtles. Having experience in combat, underwater diving, and rescue, he brings resilience and leadership to this seaside sanctuary. After 15 years of devoted work, he now focuses his talents on the hospitality industry, crafting an experience as lively as the sunsets in Morjim and as distinct as the turtle nesting site.'
+    description: 'Former Marine Commando R. Paul, from Indias Naval Special Forces brings his adventurous spirit and passion for culinary arts to Turtles. Having experience in combat, underwater diving, and rescue, he brings resilience and leadership to this seaside sanctuary. After 15 years of devoted work, he now focuses his talents on the hospitality industry, crafting an experience as lively as the sunsets in Morjim and as distinct as the turtle nesting site.',
+    image: '/paul_r.jpg'
   }
 ]);
 
