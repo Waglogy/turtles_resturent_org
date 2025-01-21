@@ -1,5 +1,24 @@
 <template>
   <div class="book-container">
+    <br>
+    <!-- Navigation Buttons Above the Book -->
+    <div class="nav-buttons-container">
+      <button 
+        class="nav-button" 
+        @click="goToPreviousPage" 
+        :disabled="currentPage <= 0"
+      >
+        Previous
+      </button>
+      <button 
+        class="nav-button" 
+        @click="goToNextPage" 
+        :disabled="currentPage >= pages.length - 1"
+      >
+        Next
+      </button>
+    </div>
+    
     <div class="book">
       <!-- Loop through pages -->
       <div
@@ -33,6 +52,7 @@ export default {
         require("@/assets/menu/14.png"), // Back cover
       ],
       flippedPages: [], // Keeps track of flipped pages
+      currentPage: 0, // Tracks the current page being viewed
     };
   },
   methods: {
@@ -43,6 +63,18 @@ export default {
       } else {
         // Flip the page
         this.flippedPages.push(index);
+      }
+    },
+    goToPreviousPage() {
+      if (this.currentPage > 0) {
+        this.togglePage(this.currentPage - 1); // Unflip the current page
+        this.currentPage--;
+      }
+    },
+    goToNextPage() {
+      if (this.currentPage < this.pages.length - 1) {
+        this.togglePage(this.currentPage); // Flip the next page
+        this.currentPage++;
       }
     },
     downloadMenu() {
@@ -59,16 +91,42 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 95vh;
   background: #f3f4f6;
+}
+
+.nav-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Adds spacing between buttons and the book */
+}
+
+.nav-button {
+  background-color: #00BCD4;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0 10px; /* Adds spacing between buttons */
+}
+
+.nav-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+  background-color: #2e4a41;
 }
 
 .book {
   width: 400px;
-  height: 500px;
+  height: 600px;
   position: relative;
   perspective: 1500px; /* Ensures 3D flipping effect */
-  margin-bottom: 20px; /* Adds spacing below the book */
 }
 
 .page {
@@ -104,14 +162,16 @@ export default {
 .download-button-container {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
+  margin-bottom:10px; /* Adds spacing above the download button */
 }
 
 .download-button {
-  background-color: #3b5d50;
+  background-color: #00BCD4;
   color: white;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;

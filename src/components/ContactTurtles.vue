@@ -1,10 +1,11 @@
 <template>
   <div class="contact-page">
     <div class="contact-header" data-aos="fade-down">
+      <br><br>
       <h1 class="contact-title">Contact Us</h1>
       <p class="contact-subtitle" data-aos="fade-up" data-aos-delay="100">We're Just a Message Away!</p>
       <p class="contact-description" data-aos="fade-up" data-aos-delay="200">
-      Have a question, craving, or plan to chill at Turtles? Reach out—we'd love to hear from you!
+        Have a question, craving, or plan to chill at Turtles? Reach out—we'd love to hear from you!
       </p>
     </div>
 
@@ -13,7 +14,7 @@
       <div class="contact-info" data-aos="fade-right">
         <h2 data-aos="fade-up">How to Reach Us</h2>
         <p data-aos="fade-up" data-aos-delay="100">
-          <span role="img" aria-label="phone">📞</span> Call Us: 9270011045/9969352048
+          <span role="img" aria-label="phone">📞</span> Call Us: 9270011045 / 9969352048
         </p>
         <p data-aos="fade-up" data-aos-delay="200">
           <span role="img" aria-label="email">📧</span> Email Us: turtles.goa@gmail.com
@@ -67,12 +68,10 @@ onMounted(() => {
 });
 </script>
 
-
-
 <style scoped>
 .contact-page {
-  padding: 50px;
   font-family: "Poppins", sans-serif;
+  padding: 20px; /* Add padding for general spacing */
 }
 
 .contact-header {
@@ -84,17 +83,20 @@ onMounted(() => {
   font-family: "Pacifico", cursive;
   font-size: 2.5rem;
   color: #3A6507;
+  line-height: 1.2; /* Added line-height for better readability */
 }
 
 .contact-subtitle {
   font-size: 1.5rem;
   color: #333;
+  margin-top: 10px; /* Added spacing between title and subtitle */
 }
 
 .contact-description {
   font-size: 1rem;
   color: #333;
   margin-top: 15px;
+  line-height: 1.5; /* Improve readability for longer text */
 }
 
 .contact-container {
@@ -102,14 +104,16 @@ onMounted(() => {
   gap: 30px;
   flex-wrap: wrap;
   justify-content: space-around;
+  /* Spacing between header and content */
 }
 
 .contact-info,
 .map-location {
-  padding: 20px;
-  border-radius: 50px;
+  padding: 20px; /* Added padding for content separation */
+  border-radius: 20px; /* Reduced border radius for a modern look */
   width: 45%;
-  max-width: 500px;
+  background-color: #f9f9f9; /* Optional background to distinguish sections */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
 }
 
 .contact-info h2,
@@ -124,6 +128,7 @@ onMounted(() => {
 .map-location p {
   font-size: 1.2rem;
   color: #333;
+  line-height: 1.5; /* Improve text readability */
 }
 
 .contact-button {
@@ -131,25 +136,30 @@ onMounted(() => {
   color: #fff;
   border: none;
   padding: 15px;
-  width: 100%;
+  
+  margin: 20px auto; /* Add top spacing for separation */
+  display: block;
   border-radius: 50px;
   font-size: 1.2rem;
   cursor: pointer;
   transition: background 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for the button */
 }
 
 .contact-button:hover {
   background: #ff6347;
+  transform: scale(1.05); /* Add hover effect for better interaction */
 }
 
 .map-location iframe {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 15px; /* Separate text from the iframe */
 }
 
 @media screen and (max-width: 768px) {
   .contact-page {
-    padding: 30px;
+    padding: 15px;
   }
 
   .contact-header {
@@ -187,6 +197,12 @@ onMounted(() => {
 
   .contact-subtitle {
     font-size: 1rem;
+  }
+
+  .contact-description,
+  .contact-info p,
+  .map-location p {
+    font-size: 0.9rem;
   }
 
   .contact-button {

@@ -1,42 +1,69 @@
 <template>
   <footer class="footer text-white py-12 px-6 sm:px-12 lg:px-24">
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-     
       <div>
         <h4 class="text-xl font-bold mb-4">Contact Us</h4>
         <p>Email: turtles.goa@gmail.com</p>
         <p>Phone: 9270011045/9969352048</p>
       </div>
       <div>
-        <h4 class="text-xl font-bold mb-4">Location</h4>
-        <p>Morjim Beach, Goa, India</p>
-        <p>Timings : 10 AM to 11 PM</p>
-      </div>
-      <div>
         <h4 class="text-xl font-bold mb-4">Follow Us</h4>
         <div class="flex space-x-4">
-          <a href="https://www.facebook.com/profile.php?id=61554956255141" target="_blank" class="text-white hover:text-cyan-300 transition duration-300">
-            <i class="fab fa-facebook-f"></i> <!-- Facebook Icon -->
+          <a
+            href="https://www.facebook.com/profile.php?id=61554956255141"
+            target="_blank"
+            class="text-white hover:text-cyan-300 transition duration-300"
+          >
+            <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="https://www.instagram.com/turtles.goa/" target="_blank" class="text-white hover:text-cyan-300 transition duration-300">
-            <i class="fab fa-instagram"></i> <!-- Instagram Icon -->
+          <a
+            href="https://www.instagram.com/turtles.goa/"
+            target="_blank"
+            class="text-white hover:text-cyan-300 transition duration-300"
+          >
+            <i class="fab fa-instagram"></i>
           </a>
-         
         </div>
       </div>
+      <div>
+  <h4 class="text-xl font-bold mb-4">Location</h4>
+  <div class="flex flex-col lg:flex-row items-start lg:items-center gap-2">
+    <!-- Text Content -->
+    <div>
+      <p>Morjim Beach, Goa, India</p>
+      <p>Timings: 10 AM to 11 PM</p>
     </div>
 
-    <!-- CTA Buttons Section -->
-    <!-- <div class="cta-buttons mt-8 text-center">
-      <a href="tel:+911234567890" class="cta-btn text-lg bg-green-500 px-6 py-3 rounded-md text-white hover:bg-green-600 transition">Got questions? Call us now!</a>
-      <a href="https://goo.gl/maps" class="cta-btn text-lg bg-blue-500 px-6 py-3 rounded-md text-white hover:bg-blue-600 transition">Find Us</a>
-      <a href="/delivery" class="cta-btn text-lg bg-orange-500 px-6 py-3 rounded-md text-white hover:bg-orange-600 transition">Get a taste of Turtles at home!</a>
-    </div> -->
+    <!-- Geo Tag Location -->
+    <div class="map-container lg:w-2/4">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15676.936586194724!2d73.730334!3d15.634362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfc3f2a84b7a93%3A0x35b105ab03ff6d!2sMorjim%20Beach!5e0!3m2!1sen!2sin!4v1692622009628!5m2!1sen!2sin"
+        width="100%"
+        height="150"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</div>
 
-    <!-- Copyright Section at the Bottom -->
+     
+    </div>
+
+    <!-- Copyright Section -->
     <div class="mt-8 text-center footer-copyright">
       <p>&copy; 2024 Turtles Restaurant & Bar. All rights reserved.</p>
-      <p>Made with love by <a href="https://www.waglogy.in" target="_blank" class="text-cyan-300 hover:text-cyan-400 transition">Waglogy</a></p>
+      <p>
+        Made with love by
+        <a
+          href="https://www.waglogy.in"
+          target="_blank"
+          class="text-cyan-300 hover:text-cyan-400 transition"
+          >Waglogy</a
+        >
+      </p>
     </div>
   </footer>
 </template>
@@ -50,7 +77,7 @@ export default {
 <style scoped>
 .footer {
   position: relative;
-  background: url('../assets/21.jpg') center/cover no-repeat;
+  background: url("../assets/21.jpg") center/cover no-repeat;
   color: white;
   padding: 50px 20px;
   display: flex;
@@ -59,13 +86,13 @@ export default {
 }
 
 .footer::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value (0.5) for transparency */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
@@ -74,18 +101,11 @@ export default {
   z-index: 2;
 }
 
-.cta-buttons {
-  display: flex;
-  justify-content: space-around;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.cta-btn {
-  font-size: 1.125rem;
-  padding: 12px 24px;
+.map-container {
+  border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .footer-copyright {

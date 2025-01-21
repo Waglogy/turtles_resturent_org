@@ -100,8 +100,8 @@
     <section class="py-16 px-6 sm:px-12 lg:px-24 text-white" data-aos="fade-up">
       <h1 class="text-4xl font-pacifico mb-8 text-center">Menu Highlights</h1>
       <div class="relative">
-        <div class="overflow-hidden" ref="sliderContainer">
-          <div class="flex transition-transform duration-300 ease-in-out" 
+        <div class="overflow-hidden " ref="sliderContainer">
+          <div class="flex  transition-transform duration-300 ease-in-out" 
                :style="{ transform: `translateX(-${currentSlides * 100}%)` }">
             <div v-for="item in menuHighlights" 
                  :key="item.id" 
@@ -110,7 +110,7 @@
                  :data-aos-delay="item.id * 100">
               <div class="group cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
                 <div class="relative overflow-hidden rounded-lg">
-                  <img :src="item.image" :alt="item.name" class="w-full h-48 object-cover transition duration-300 transform group-hover:scale-110">
+                  <img :src="item.image" :alt="item.name" class="w-full shadow h-48 object-cover transition duration-300 transform group-hover:scale-110">
                   <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <p class="text-white bg-white font-bold text-center px-4">{{ item.description }}</p>
                   </div>
@@ -134,7 +134,7 @@
       <div class="text-center mt-12">
         <router-link 
           :to="{ name: 'MenuViewer' }"
-          class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
+          class="bg-cyan-500 shadow hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
         >
           Check out our Full Menu
         </router-link>
@@ -142,14 +142,14 @@
     </section>
 
     <!-- Tipsy Turtle Section -->
-    <section class="py-0 px-6 sm:px-12 lg:px-24 relative overflow-hidden" data-aos="fade-up">
+    <section class="py-0 px-6 sm:px-12 lg:px-24 relative overflow-hidden" data-aos="fade-up shadow">
       <div class="max-w-4xl mx-auto text-center relative z-10 flex flex-col sm:flex-row items-center sm:items-start sm:justify-between">
         <div class="text-center sm:text-left sm:mr-8 mb-8 sm:mb-0" data-aos="fade-right">
           <h1 class="text-4xl font-pacifico text-olive-green mb-4">Oh, and don't miss out on the Tipsy Turtle!</h1>
           <br>
           <router-link 
             :to="{ name: 'MenuViewer' }"
-            class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
+            class="bg-orange-500 shadow hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
           >
             Sip Through Our Bar Menu
           </router-link>
@@ -157,7 +157,7 @@
         <img 
           :src="trispy" 
           alt="Turtle Cutout" 
-          class="w-full max-w-sm sm:mt-8 sm:mx-auto sm:top-auto sm:right-auto transform transition-all duration-300 hover:scale-105"
+          class="w-full  max-w-sm sm:mt-8 sm:mx-auto sm:top-auto sm:right-auto transform transition-all duration-300 hover:scale-105"
           data-aos="fade-left"
         >
       </div>
@@ -413,6 +413,8 @@ onMounted(() => {
   border-radius: 40px;
   cursor: pointer;
   transition: background 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+
 }
 
 .cta-button-primarys:hover { /* Remove the space */
@@ -436,6 +438,8 @@ onMounted(() => {
   border-radius: 40px;
   cursor: pointer;
   transition: background 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+
 }
 
 .cta-button-primary:hover { /* Remove the space */
@@ -460,6 +464,8 @@ onMounted(() => {
   border-radius: 40px;
   cursor: pointer;
   transition: background 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+
 }
 
 .cta-button-secondary:hover { /* Remove the space */
@@ -594,6 +600,10 @@ Body: Raleway
 Highlighting a word or two: Pacifico  */
 
 
+
+}
+.shadow{
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
 
 }
 /* call-to-action-area css start here */
