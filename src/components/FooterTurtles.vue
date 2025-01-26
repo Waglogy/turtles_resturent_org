@@ -25,17 +25,27 @@
           </a>
         </div>
       </div>
+
       <div>
-  <h4 class="text-xl font-bold mb-4">Location</h4>
-  <div class="flex flex-col lg:flex-row items-start lg:items-center gap-2">
+  <h4 class="text-xl font-bold mb-4">Timings</h4>
+  <div class="flex flex-col lg:flex-row items-center lg:items-center gap-10">
     <!-- Text Content -->
     <div>
-      <p>Morjim Beach, Goa, India</p>
-      <p>Timings: 10 AM to 11 PM</p>
+     
+      <p> 10 AM to 11 PM</p>
     </div>
 
     <!-- Geo Tag Location -->
-    <div class="map-container lg:w-2/4">
+    
+  </div>
+</div>
+
+      <div>
+  <h4 class="text-xl font-bold mb-4">Location</h4>
+  <div class="flex flex-col lg:flex-column items-center lg:items-center gap-10">
+    
+    <!-- Geo Tag Location -->
+    <div class="map-container lg:w-6/4">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15676.936586194724!2d73.730334!3d15.634362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfc3f2a84b7a93%3A0x35b105ab03ff6d!2sMorjim%20Beach!5e0!3m2!1sen!2sin!4v1692622009628!5m2!1sen!2sin"
         width="100%"

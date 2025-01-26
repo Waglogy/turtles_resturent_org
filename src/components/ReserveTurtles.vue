@@ -223,19 +223,21 @@ textarea {
   background: #ffffff;
   color: black;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   border:2px #00BCD4;
   text-align: center;
   margin-bottom: 20px;
   font-size: 1.2em;
+  font-weight: 1rem;
+  font-family: "Pacifico", cursive; 
   max-width: 450px;
   width: 100%;
 }
 
 .ok-button {
   background: #fff;
-  color: #4CAF50;
-  border: 2px solid #4CAF50;
+  color: #00BCD4;
+  border: 2px solid #00BCD4;
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 1em;
@@ -244,7 +246,7 @@ textarea {
 }
 
 .ok-button:hover {
-  background: #4CAF50;
+  background:  #00BCD4;
   color: #000000;
 }
 

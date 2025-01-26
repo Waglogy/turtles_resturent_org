@@ -201,12 +201,12 @@ import axios from 'axios';
 import slide1 from "../assets/4.png";
 import slide2 from "../assets/5.png";
 import slide3 from "../assets/6.png";
-import food1 from "../assets/food/Cream Of Tomato Basil Soup.jpeg";
-import food2 from "../assets/food/Drums Of Heaven (Chicken Lollipop)4.jpeg";
-import food3 from "../assets/food/Eggs-Benedict-9.jpg";
-import food4 from "../assets/food/Margarita Pizza.jpeg";
-import food5 from "../assets/food/Papaya Lassi.jpeg";
-import food6 from "../assets/food/Tomato_Cheese_Sandwich_Recipe-1.jpg";
+import food1 from "../assets/food/Thai+Cuisine.png";
+import food2 from "../assets/food/tibitan.jpg";
+import food3 from "../assets/food/continental.jpg";
+import food4 from "../assets/food/indian.jpeg";
+import food5 from "../assets/food/chinise.jpeg";
+import food6 from "../assets/food/italian.jpg";
 
 import trispy from "../assets/11.png";
 import gall1 from "../assets/gallery/6.jpg";
