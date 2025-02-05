@@ -18,7 +18,7 @@
         Next
       </button>
     </div>
-    
+
     <div class="book">
       <!-- Loop through pages -->
       <div
@@ -31,6 +31,7 @@
         <img :src="page" alt="Book Page" class="page-content" />
       </div>
     </div>
+
     <!-- Menu Download Button -->
     <div class="download-button-container">
       <button @click="downloadMenu" class="download-button">
@@ -86,19 +87,31 @@ export default {
 </script>
 
 <style scoped>
+/* General container settings */
 .book-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 95vh;
+  min-height: 100vh; /* Ensure it takes full screen height */
+  padding: 20px 0; /* Adds some space at the top and bottom */
   background: #f3f4f6;
 }
 
+.book {
+  width: 400px;
+  height: 600px;
+  position: relative;
+  perspective: 1500px;
+  margin-bottom: 20px; /* Adds space above the footer */
+}
+
+/* Navigation buttons */
 .nav-buttons-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px; /* Adds spacing between buttons and the book */
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .nav-button {
@@ -110,7 +123,7 @@ export default {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin: 0 10px; /* Adds spacing between buttons */
+  margin: 5px; /* Ensures spacing between buttons */
 }
 
 .nav-button:disabled {
@@ -122,13 +135,10 @@ export default {
   background-color: #2e4a41;
 }
 
-.book {
-  width: 400px;
-  height: 600px;
-  position: relative;
-  perspective: 1500px; /* Ensures 3D flipping effect */
-}
+/* Book container */
 
+
+/* Pages inside the book */
 .page {
   position: absolute;
   width: 100%;
@@ -138,7 +148,7 @@ export default {
   transform-origin: left;
   transition: transform 0.8s ease-in-out;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  backface-visibility: hidden; /* Hides the back side of the page */
+  backface-visibility: hidden;
 }
 
 .page.flipped {
@@ -146,32 +156,33 @@ export default {
 }
 
 .page:nth-child(even) {
-  transform-origin: right; /* Flip from the right for even pages */
+  transform-origin: right;
 }
 
 .page:nth-child(odd) {
   z-index: 2;
 }
 
+/* Page images */
 .page-content {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
+/* Download button */
 .download-button-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-  margin-bottom:10px; /* Adds spacing above the download button */
 }
 
 .download-button {
   background-color: #00BCD4;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 25px;
   border: none;
-  border-radius: 20px;
+  border-radius: 25px;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -179,5 +190,30 @@ export default {
 
 .download-button:hover {
   background-color: #2e4a41;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .book {
+    max-width: 350px;
+    max-height: 70vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .book {
+    max-width: 280px;
+    max-height: 60vh;
+  }
+
+  .nav-button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .download-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
 }
 </style>

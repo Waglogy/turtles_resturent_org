@@ -110,7 +110,7 @@ const handleSubmit = async () => {
     };
 
     // Send email using EmailJS
-    await emailjs.send('service_pkjkm3j', 'template_ll3xxvd', {
+    await emailjs.send('service_empq6or', 'template_iwcfah3', {
       to_name: 'Turtles Restaurant',
       from_name: requestData.username,
       phone: requestData.phone,
@@ -118,7 +118,7 @@ const handleSubmit = async () => {
       reserve_date: requestData.reserveDate,
       table: requestData.table,
       special_request: requestData.specialRequest
-    }, 'PuaNT9Bhz-JOJnF9A');
+    }, 'Ox15g1wPOAJofphXz');
 
     successMessage.value = 'Thank you for your reservation request! We\'ve received your booking and will give you a confirmation call shortly. Stay tuned!';
     

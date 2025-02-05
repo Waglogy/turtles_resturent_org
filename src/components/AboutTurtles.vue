@@ -85,12 +85,12 @@ import 'aos/dist/aos.css';
 const visionaries = ref([
   {
     name: 'Paul M.',
-    description: 'Having a vast experience in the marine industry, M. Paul delivers unparalleled service excellence and careful focus on detail to Turtles. His commitment to ensuring a smooth and pleasant experience for each guest comes from his extensive background of professional success. Paul s transition to the hospitality industry demonstrates his dedication to accuracy, dependability, and innovation, turning Turtles into a sanctuary for visitors looking for a mix of good food and relaxation near the beach in North Goa.',
+    description: 'Having a vast experience in the marine industry, M. Paul delivers unparalleled service excellence and careful focus on detail to Turtles. His commitment to ensuring a smooth and pleasant experience for each guest comes from his extensive background of professional success. M. Paul transition to the hospitality industry demonstrates his dedication to accuracy, dependability, and innovation, turning Turtles into a sanctuary for visitors looking for a mix of good food and relaxation near the beach in North Goa.',
     image: '/paul_m.jpg'
   },
   {
     name: 'Paul R.',
-    description: 'Former Marine Commando R. Paul, from Indias Naval Special Forces brings his adventurous spirit and passion for culinary arts to Turtles. Having experience in combat, underwater diving, and rescue, he brings resilience and leadership to this seaside sanctuary. After 15 years of devoted work, he now focuses his talents on the hospitality industry, crafting an experience as lively as the sunsets in Morjim and as distinct as the turtle nesting site.',
+    description: 'Former Marine Commando R. Paul, from Indian Naval Special Forces brings his adventurous spirit and passion for culinary arts to Turtles. Having experience in combat, underwater diving, and rescue, he brings resilience and leadership to this seaside sanctuary. After 15 years of devoted work, he now focuses his talents on the hospitality industry, crafting an experience as lively as the sunsets in Morjim and as distinct as the turtle nesting site.',
     image: '/paul_r.jpg'
   }
 ]);

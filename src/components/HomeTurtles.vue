@@ -57,7 +57,7 @@
       </div>
 
       <!-- Events Grid -->
-      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 justify-items-center w-full">
         <template v-if="events.length === 0">
           <p class="col-span-full text-center text-gray-600">No upcoming events at the moment.</p>
         </template>
@@ -68,78 +68,94 @@
         <!-- Multiple events -->
         <template v-else>
           <div v-for="event in events" 
-               :key="event._id" 
-               class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 w-full max-w-sm"
-               data-aos="fade-up"
-               :data-aos-delay="100">
-            <img :src="event.image" :alt="event.title" class="w-full h-48 object-cover">
-            <div class="p-6">
-              <h2 class="text-xl font-bold mb-2">{{ event.title }}</h2>
-              <p class="text-gray-600 mb-2">{{ formatDate(event.date) }}</p>
-              <p class="text-gray-600 mb-4">{{ formatTime(event.time) }}</p>
-              <p class="text-gray-700 mb-4">{{ event.description }}</p>
-              <router-link 
-                :to="{ 
-                  name: 'BookEvent',
-                  query: { 
-                    eventId: event._id,
-                    eventName: event.title
-                  }
-                }" 
-                class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full inline-block transition duration-300"
-              >
-                Book a Spot
-              </router-link>
-            </div>
-          </div>
+     :key="event._id" 
+     class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2 w-full max-w-2xl"
+     data-aos="fade-up"
+     :data-aos-delay="100">
+  
+  <div class="flex flex-col md:flex-row">
+    <!-- Image Section -->
+    <img :src="event.image" 
+         :alt="event.title" 
+         class="w-full md:w-1/2 h-70 md:h-auto object-cover">
+    
+    <!-- Content Section -->
+    <div class="w-full md:w-1/2 p-6 flex flex-col justify-center">
+      <h2 class="text-2xl font-bold mb-3">{{ event.title }}</h2>
+      <p class="text-gray-600 mb-1">{{ formatDate(event.date) }}</p>
+      <p class="text-gray-600 mb-2">{{ formatTime(event.time) }}</p>
+      <p class="text-gray-700 mb-4">{{ event.description }}</p>
+      
+      <router-link 
+        :to="{ 
+          name: 'BookEvent',
+          query: { 
+            eventId: event._id,
+            eventName: event.title
+          }
+        }" 
+        class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-5 rounded-full inline-block transition duration-300 text-center self-start"
+      >
+        Book a Spot
+      </router-link>
+    </div>
+  </div>
+</div>
+
         </template>
       </div>
     </section>
 
     <!-- Menu Section -->
-    <section class="py-16 px-6 sm:px-12 lg:px-24 text-white" data-aos="fade-up">
-      <h1 class="text-4xl font-pacifico mb-8 text-center">Menu Highlights</h1>
-      <div class="relative">
-        <div class="overflow-hidden " ref="sliderContainer">
-          <div class="flex  transition-transform duration-300 ease-in-out" 
-               :style="{ transform: `translateX(-${currentSlides * 100}%)` }">
-            <div v-for="item in menuHighlights" 
-                 :key="item.id" 
-                 class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 px-4"
-                 data-aos="fade-up"
-                 :data-aos-delay="item.id * 100">
-              <div class="group cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
-                <div class="relative overflow-hidden rounded-lg">
-                  <img :src="item.image" :alt="item.name" class="w-full shadow h-48 object-cover transition duration-300 transform group-hover:scale-110">
-                  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                    <p class="text-white bg-white font-bold text-center px-4">{{ item.description }}</p>
-                  </div>
-                </div>
-                <h2 class="mt-2 text-lg font-pacifico text-olive-green">{{ item.name }}</h2>
+ <section class="py-16 px-6 sm:px-12 lg:px-24 text-white" data-aos="fade-up">
+  <h1 class="text-4xl font-pacifico mb-8 text-center">Menu Highlights</h1>
+  <div class="relative">
+    <div class="overflow-hidden" ref="sliderContainer">
+      <div class="flex transition-transform duration-300 ease-in-out"
+           :style="{ transform: `translateX(-${currentSlides * 33.33}%)` }">
+        <div v-for="item in menuHighlights" 
+             :key="item.id" 
+             class="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 px-4"
+             data-aos="fade-up"
+             :data-aos-delay="item.id * 100">
+          <div class="group cursor-pointer transform transition-all duration-300 hover:-translate-y-2">
+            <div class="relative overflow-hidden rounded-lg">
+              <img :src="item.image" :alt="item.name" 
+                   class="w-full shadow h-48 object-cover transition duration-300 transform group-hover:scale-110">
+              <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                <p class="text-white bg-white font-bold text-center px-4">{{ item.description }}</p>
               </div>
             </div>
+            <h2 class="mt-2 text-lg font-pacifico text-olive-green">{{ item.name }}</h2>
           </div>
         </div>
-        <button @click="prevSlides" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button @click="nextSlides" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
       </div>
-      <div class="text-center mt-12">
-        <router-link 
-          :to="{ name: 'MenuViewer' }"
-          class="bg-cyan-500 shadow hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300"
-        >
-          Check out our Full Menu
-        </router-link>
-      </div>
-    </section>
+    </div>
+
+    <!-- Prev Button -->
+    <button @click="prevSlides" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next Button -->
+    <button @click="nextSlides" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="text-center mt-12">
+    <router-link 
+      :to="{ name: 'MenuViewer' }"
+      class="bg-cyan-500 shadow hover:bg-cyan-600 text-white font-bold py-2 px-6 rounded-full text-lg transition duration-300">
+      Check out our Full Menu
+    </router-link>
+  </div>
+</section>
+
 
     <!-- Tipsy Turtle Section -->
     <section class="py-0 px-6 sm:px-12 lg:px-24 relative overflow-hidden" data-aos="fade-up shadow">
@@ -168,7 +184,58 @@
       </div>
     </section>
 
-    <!-- Customer Reviews Section -->
+
+     <!-- Customer Reviews Section -->
+     <section class="py-0 px-6 sm:px-12 lg:px-24 relative overflow-hidden" data-aos="fade-up shadow">
+    <div class="text-center my-8">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-gray-800">What Our Customers Say</h2>
+      
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Review Card 1 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+            <img src="/review3.jpg" alt="Google Review Screenshot 1" class="rounded-lg mb-4">
+            <p class="text-gray-700">"I am genuinely surprised at the ratings, while I do understand it was afternoon, late evening when I went and was genuinely not expecting a crowd, etc.
+
+However, the majority of the items in the menu were not available, even though it was the weekend.
+
+I was requested to take the goa  standard garlic prawns and basic starters.
+
+The cocktails are very decent.
+
+Yes, the prices are competitive, and roughly 15% cheaper than the shacks bang on the beach, please note this place is not on the beach, but like 200 meters away from it on a parallel road, beach is not visible from here.
+
+The staff were very courteous, the place was definitely kept clean and the bathrooms were clean as well."</p>
+            <span class="block mt-2 text-gray-500 text-sm">- vivian chacko</span>
+        </div>
+
+        <!-- Review Card 2 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+            <img src="/review1.jpg" alt="Google Review Screenshot 2" class="rounded-lg mb-4">
+            <p class="text-gray-700">"Reached here for a late lunch…. Perfect ambience adjacent to the beach and cordial hospitality for an off-crowd hangout. Ordered Prawns Golden Fry and Fish & Chips that were perfectly fried and most importantly delicious, while the Pork Chilli tasted good, however meat could have been evenly cut and cooked. Just a fall out in my opinion. All otherwise, really good… Worth regular visits"</p>
+            <span class="block mt-2 text-gray-500 text-sm">- Rachel Jenilyn</span>
+        </div>
+
+        <!-- Review Card 3 -->
+        <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+            <img src="/review2.jpg" alt="Google Review Screenshot 3" class="rounded-lg mb-4">
+            <p class="text-gray-700">"Turtles Restaurant is an absolute gem! The service is truly incredible – the staff go above and beyond to ensure a wonderful dining experience. The food is exceptional, with every dish prepared to perfection and bursting with flavor.
+
+It’s also a fantastic spot for families; the child-friendly atmosphere makes it easy to relax and enjoy your meal, even with little ones in tow. The location is simply stunning, especially at sunset when the golden light filters through the palm trees – it’s breathtaking!
+
+The cocktails are another highlight, crafted to perfection and full of fresh, vibrant flavors. Adding to the charm is the restaurant’s proximity to turtle nesting sites, which adds a unique and memorable touch to the experience.
+
+If you’re looking for a mix of great food, stellar service, and a magical setting, Turtles Restaurant is a must-visit."</p>
+            <span class="block mt-2 text-gray-500 text-sm">- David Rowley</span>
+        </div>
+    </div>
+</section>
+
+
+
+
+   
     <section class="py-16 px-6 sm:px-12 lg:px-24 bg-beige-100" data-aos="fade-up">
       <h1 class="text-4xl font-pacifico text-olive-green mb-8 text-center">Turtley Good Times</h1>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -198,9 +265,9 @@ import 'aos/dist/aos.css';
 import axios from 'axios';
 
 // Image imports
-import slide1 from "../assets/4.png";
+import slide1 from "../assets/banner1.jpg";
 import slide2 from "../assets/5.png";
-import slide3 from "../assets/6.png";
+import slide3 from "../assets/4.png";
 import food1 from "../assets/food/Thai+Cuisine.png";
 import food2 from "../assets/food/tibitan.jpg";
 import food3 from "../assets/food/continental.jpg";
@@ -327,6 +394,13 @@ const menuHighlights = [
   { id: 4, name: 'INDIAN', image: food4, description: 'Indulge in the vibrant and diverse flavors of Indian cuisine, with a range of spicy, tangy, and aromatic dishes.' },
   { id: 5, name: 'CHINESE', image: food5, description: 'Enjoy the bold and flavorful tastes of Chinese cuisine, featuring a mix of sweet, sour, and savory dishes.' },
   { id: 6, name: 'ITALIAN', image: food6, description: 'Relish the rich and comforting flavors of Italian cuisine, with a selection of pasta, pizza, and other classic dishes.' },
+  {id: 7, name: 'THAI', image: food1, description: 'Experience the exotic flavors of Thailand with our authentic Thai dishes, crafted with fresh ingredients and aromatic spices.' },
+  { id: 8, name: 'TIBETAN', image: food2, description: 'Delight in the unique and hearty flavors of Tibetan cuisine, featuring traditional recipes and rich, savory dishes.' },
+  { id: 9, name: 'CONTINENTAL', image: food3, description: 'Savor the diverse and refined tastes of Continental cuisine, offering a variety of classic European dishes.' },
+  { id: 10, name: 'INDIAN', image: food4, description: 'Indulge in the vibrant and diverse flavors of Indian cuisine, with a range of spicy, tangy, and aromatic dishes.' },
+  { id: 11, name: 'CHINESE', image: food5, description: 'Enjoy the bold and flavorful tastes of Chinese cuisine, featuring a mix of sweet, sour, and savory dishes.' },
+  { id: 12, name: 'ITALIAN', image: food6, description: 'Relish the rich and comforting flavors of Italian cuisine, with a selection of pasta, pizza, and other classic dishes.' },
+
 ];
 
 const customerPhotos = [

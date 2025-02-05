@@ -47,7 +47,7 @@
     <!-- Geo Tag Location -->
     <div class="map-container lg:w-6/4">
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15676.936586194724!2d73.730334!3d15.634362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfc3f2a84b7a93%3A0x35b105ab03ff6d!2sMorjim%20Beach!5e0!3m2!1sen!2sin!4v1692622009628!5m2!1sen!2sin"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3842.5302568198404!2d73.735346!3d15.616726900000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfe966e7743bfb%3A0xe703e52aadd9c71c!2sTurtles%20Restaurant%20%26%20Bar!5e0!3m2!1sen!2sin!4v1738674223972!5m2!1sen!2sin"
         width="100%"
         height="150"
         style="border:0;"
@@ -55,7 +55,7 @@
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
-    </div>
+    </div> 
   </div>
 </div>
 
