@@ -309,7 +309,7 @@ const heroSlides = [
     description: 'Immerse yourself in the local flavors and atmosphere',
     image: slide3,
     ctaText: 'Explore Menu',
-    ctaLink: '/Turtles_Menu .pdf'
+    ctaLink: '/menu'
   }
 ];
 
