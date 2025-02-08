@@ -277,10 +277,10 @@ import food6 from "../assets/food/italian.jpg";
 
 import trispy from "../assets/11.png";
 import gall1 from "../assets/IMG-20250208-WA0011.jpg";
-import gall2 from "../assets/gallery/2.jpg";
+import gall2 from "../assets/IMG-20250208-WA0012.jpg";
 import gall3 from "../assets/gallery/9.jpg";
 import gall4 from "../assets/gallery/4.jpg";
-import gall5 from "../assets/IMG-20250208-WA0012.jpg";
+import gall5 from "../assets/WhatsApp Image 2025-02-08 at 15.47.09_0e65695c.jpg";
 import gall6 from "../assets/gallery/8.jpg";
 import gall7 from "../assets/gallery/7.jpg";
 import gall8 from "../assets/IMG-20250208-WA0015.jpg";
