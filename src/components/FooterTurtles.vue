@@ -28,7 +28,7 @@
 
       <div>
   <h4 class="text-xl font-bold mb-4">Timings</h4>
-  <div class="flex flex-col lg:flex-row items-center lg:items-center gap-10">
+  <div class="flex flex-col lg:flex-row  lg:items-center gap-10">
     <!-- Text Content -->
     <div>
      
