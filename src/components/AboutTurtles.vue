@@ -68,7 +68,7 @@
         Come and immerse yourself in the unique atmosphere of Turtles Restaurant & Bar. Enjoy our delicious cuisine, refreshing drinks, and breathtaking views of Morjim Beach.
       </p>
       <a href="/reserve" 
-         class="bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block"
+         class=" bg-cyan-500 hover:bg-cyan-600 text-black font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block"
          data-aos="fade-up"
          data-aos-delay="200">
         Reserve Your Table
